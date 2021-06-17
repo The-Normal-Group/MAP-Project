@@ -1,5 +1,4 @@
-import 'package:fake_app/main.dart';
-import 'package:fake_app/screens/create_tournament/create_tournament_screen.dart';
+import '../../create_tournament/create_tournament_screen.dart';
 import 'package:flutter/material.dart';
 import '../tournament_organizer_screen.dart';
 
