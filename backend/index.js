@@ -10,6 +10,9 @@ app.use('/user', userRoute);
 const tournamentRoute = require("./routes/Tournamnets");
 app.use('/tournaments', tournamentRoute);
 
+const teamRoute = require("./routes/Teams");
+app.use('/teams', teamRoute);
+
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
     console.log(`listening on port ${port}...`)
