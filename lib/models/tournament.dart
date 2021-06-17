@@ -1,4 +1,4 @@
-class User {
+class Tournament {
   dynamic
       _id; // Use dynamic type because json-server id is int and firestore id is string
   String _name;
@@ -23,7 +23,7 @@ class User {
   get description => _description;
   set description(value) => _description = value;
 
-  User(
+  Tournament(
       {dynamic id,
       String name = '',
       String skillLevel = '',
@@ -34,7 +34,7 @@ class User {
         _skillLevel = skillLevel,
         _prizePool = prizePool,
         _description = description;
-  User.copy(User from)
+  Tournament.copy(Tournament from)
       : this(
             id: from.id,
             name: from.name,
@@ -42,7 +42,7 @@ class User {
             prizePool: from.prizePool,
             description: from.description);
 
-  User.fromJson(Map<String, dynamic> json)
+  Tournament.fromJson(Map<String, dynamic> json)
       : this(
           id: json['id'],
           name: json['name'],
