@@ -1,18 +1,65 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Alexander Holmes",
-      "photoUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
-      "login": "alex",
+      "id": 0,
+      "username": "alex",
+      "email": "alex@gmail.com",
       "password": "123"
     },
     {
-      "id": 2,
-      "name": "Jessica Walters",
-      "photoUrl": "https://randomuser.me/api/portraits/thumb/women/75.jpg",
-      "login": "jessica",
+      "id": 1,
+      "username": "jessica",
+      "email": "jessica@gmail.com",
       "password": "123"
+    },
+    {
+      "username": "omar",
+      "email": "omar@gmail.com",
+      "password": "123",
+      "type": 1,
+      "id": 2
+    },
+    {
+      "username": "omar",
+      "email": "omar@gmail.com",
+      "password": "123",
+      "type": 1,
+      "id": 3
+    },
+    {
+      "username": "omar",
+      "email": "omar@gmail.com",
+      "password": "123",
+      "type": 1,
+      "id": 4
+    },
+    {
+      "username": "omar",
+      "email": "omar@gmail.com",
+      "password": "123",
+      "type": 1,
+      "id": 5
+    },
+    {
+      "username": "omar",
+      "email": "omar@gmail.com",
+      "password": "123",
+      "type": 1,
+      "id": 6
+    },
+    {
+      "username": "omar",
+      "email": "omar@gmail.com",
+      "password": "123",
+      "type": 1,
+      "id": 7
+    },
+    {
+      "username": "oma2r",
+      "email": "omar@gmail.com",
+      "password": "1234",
+      "type": 1,
+      "id": 8
     }
   ],
   "counters": [
