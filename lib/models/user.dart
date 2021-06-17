@@ -1,21 +1,21 @@
 class User {
   dynamic
       _id; // Use dynamic type because json-server id is int and firestore id is string
-  String _name;
-  String _photoUrl;
+  String _email;
   String _login;
   String _password;
+  int _type;
 
   // ignore: unnecessary_getters_setters
   get id => _id;
   // ignore: unnecessary_getters_setters
   set id(value) => _id = value;
 
-  get name => _name;
-  set name(value) => _name = value;
+  get email => _email;
+  set email(value) => _email = value;
 
-  get photoUrl => _photoUrl;
-  set photoUrl(value) => _photoUrl = value;
+  get type => _type;
+  set type(value) => _type = value;
 
   get login => _login;
   set login(value) => _login = value;
@@ -25,37 +25,36 @@ class User {
 
   User(
       {dynamic id,
-      String name = '',
-      String photoUrl = '',
+      int type,
+      String email = '',
       String login = '',
       String password = ''})
       : _id = id,
-        _name = name,
-        _photoUrl = photoUrl,
+        _email = email,
+        _type = type,
         _login = login,
         _password = password;
   User.copy(User from)
       : this(
             id: from.id,
-            name: from.name,
-            photoUrl: from.photoUrl,
+            email: from.email,
+            type: from.type,
             login: from.login,
             password: from.password);
 
   User.fromJson(Map<String, dynamic> json)
       : this(
-          id: json['id'],
-          name: json['name'],
-          photoUrl: json['photoUrl'],
-          login: json['login'],
+          type: json['type'],
+          email: json['email'],
+          login: json['username'],
           password: json['password'],
         );
 
   Map<String, dynamic> toJson() => {
         'id': id,
-        'name': name,
-        'photoUrl': photoUrl,
-        'login': login,
+        'type': type,
+        'email': email,
+        'username': login,
         'password': password,
       };
 }

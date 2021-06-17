@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'widgets/bar.dart';
 import 'widgets/body.dart';
 
-
-class TournamentOrganizerScreen extends StatelessWidget {
-  static Route route() => MaterialPageRoute(
-      builder: (context) => TournamentOrganizerScreen());
+class TeamOrganizerScreen extends StatelessWidget {
+  static Route route() =>
+      MaterialPageRoute(builder: (context) => TeamOrganizerScreen());
   @override
   Widget build(BuildContext context) {
     return WillPopScope(

@@ -5,10 +5,11 @@ import '../../view.dart';
 import '../register_viewmodel.dart';
 
 class Body extends StatelessWidget {
-  void _onLogin(BuildContext context, RegisterViewmodel viewmodel) async {
-    final User _user = await viewmodel.authenticate();
+  void _onRegister(BuildContext context, RegisterViewmodel viewmodel) async {
+    final User _user = await viewmodel.register();
 
-    if (_user != null) Navigator.pop(context, _user);
+    print('$_user');
+    //if (_user != null) Navigator.pop(context, _user);
   }
 
   void _onCancel(BuildContext context, RegisterViewmodel viewmodel) {
@@ -29,6 +30,10 @@ class Body extends StatelessWidget {
               icon: Icons.people,
               onChanged: (value) => viewmodel.username = value),
           _buildTextField(
+              hint: 'Email',
+              icon: Icons.people,
+              onChanged: (value) => viewmodel.email = value),
+          _buildTextField(
               hint: 'Password',
               isObsecure: !viewmodel.showPassword,
               icon: Icons.lock,
@@ -42,6 +47,36 @@ class Body extends StatelessWidget {
               'Invalid username or password!',
               style: TextStyle(color: Colors.red, fontSize: 20.0),
             ),
+          _buildTextField(
+              hint: 'Confirm Password',
+              isObsecure: !viewmodel.showPassword,
+              icon: Icons.lock,
+              button: IconButton(
+                  icon: Icon(Icons.visibility),
+                  onPressed: () =>
+                      viewmodel.showPassword = !viewmodel.showPassword),
+              onChanged: (value) => viewmodel.confPassword = value),
+          if (viewmodel.showErrorMessage)
+            Text(
+              'Invalid username or password!',
+              style: TextStyle(color: Colors.red, fontSize: 20.0),
+            ),
+          //dsdsdsadsa
+          DropdownButton<String>(
+            hint: Text("User Type"),
+            items: <String>['Player', 'Host'].map((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: new Text(value),
+              );
+            }).toList(),
+            value: viewmodel.stringType,
+            onChanged: (value) {
+              viewmodel.type = value;
+              print(
+                  '${viewmodel.type} /n ${viewmodel.password}  /n ${viewmodel.password} /n ${viewmodel.username}  /n ${viewmodel.email}');
+            },
+          ),
           SizedBox(height: 10.0),
           _buildButtons(context, viewmodel)
         ],
@@ -67,8 +102,8 @@ class Body extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ElevatedButton(
-          child: Text('Log in'),
-          onPressed: () => _onLogin(context, viewmodel),
+          child: Text('Register'),
+          onPressed: () => _onRegister(context, viewmodel),
         ),
         SizedBox(width: 10.0),
         ElevatedButton(

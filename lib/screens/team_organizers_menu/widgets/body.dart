@@ -1,5 +1,4 @@
-import 'package:fake_app/main.dart';
-import 'package:fake_app/screens/create_team/create_team_screen.dart';
+import '../../create_team/create_team_screen.dart';
 import 'package:flutter/material.dart';
 import '../team_organizer_screen.dart';
 

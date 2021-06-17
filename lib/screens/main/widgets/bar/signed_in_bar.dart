@@ -10,8 +10,7 @@ class SignedInBar extends Bar {
   @override
   Widget build(BuildContext context) {
     return Bar(
-      title: _viewmodel.user.name,
-      image: NetworkImage(_viewmodel.user.photoUrl),
+      title: _viewmodel.user.login,
       button: IconButton(
           icon: Icon(
             Icons.logout,

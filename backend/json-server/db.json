@@ -76,6 +76,20 @@
       "prizePool": "1234",
       "description": "bronze level tournament",
       "id": 1
+    },
+    {
+      "name": "lol tournament",
+      "skillLevel": "Advanced",
+      "prizePool": "1234",
+      "description": "bronze level tournament",
+      "id": 2
+    },
+    {
+      "name": "lol tournament",
+      "skillLevel": "Advanced",
+      "prizePool": "1234",
+      "description": "bronze level tournament",
+      "id": 3
     }
   ],
   "teams": [
@@ -96,6 +110,24 @@
       "capacity": "7",
       "description": "silver level tournament",
       "id": 2
+    },
+    {
+      "name": "team3",
+      "capacity": "7",
+      "description": "silver level tournament",
+      "id": 3
+    },
+    {
+      "name": "team3",
+      "capacity": "7",
+      "description": "silver level tournament",
+      "id": 4
+    },
+    {
+      "name": "team3",
+      "capacity": "7",
+      "description": "silver level tournament",
+      "id": 5
     }
   ]
 }
