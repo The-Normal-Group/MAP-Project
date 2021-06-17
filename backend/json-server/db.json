@@ -81,10 +81,21 @@
   "teams": [
     {
       "name": "newbies",
-      "membersAmount": 3,
+      "capacity": 3,
       "description": "bronze level team",
       "id": 0
+    },
+    {
+      "name": "team2",
+      "capacity": "5",
+      "description": "gold level tournament",
+      "id": 1
+    },
+    {
+      "name": "team3",
+      "capacity": "7",
+      "description": "silver level tournament",
+      "id": 2
     }
   ]
-
 }
