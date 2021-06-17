@@ -62,16 +62,29 @@
       "id": 8
     }
   ],
-  "counters": [
+  "tournaments": [
     {
-      "counter": 1,
-      "id": 1,
-      "user": 1
+      "name": "lol tournament",
+      "skillLevel": "Advanced",
+      "prizePool": "1234",
+      "description": "bronze level tournament",
+      "id": 0
     },
     {
-      "counter": 2,
-      "id": 2,
-      "user": 2
+      "name": "lol tournament",
+      "skillLevel": "Advanced",
+      "prizePool": "1234",
+      "description": "bronze level tournament",
+      "id": 1
+    }
+  ],
+  "teams": [
+    {
+      "name": "newbies",
+      "membersAmount": 3,
+      "description": "bronze level team",
+      "id": 0
     }
   ]
+
 }
