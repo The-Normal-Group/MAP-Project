@@ -11,24 +11,38 @@ const schema = Joi.object({
 });
 
 module.exports = {
+    getUser: async (req, res) => {
+        const data = await user.getUser(parseInt(req.params.id));
+        if (!data) {
+            res.status(404).send('The course with the given ID was not found.');
+            return;
+        }
+        res.send(data);
+    },
 
-    addUser : async (req, res) => {
-    
-    const result = schema.validate(req.body);
-    if (result.error){
-        res.status(400).send(result.error.details[0].message);
-        return;
-    }
+    getAllUsers: async (req, res) => {
+        const data = await user.getAllUsers();
+        res.send(data);
+    },
 
-    const newUser = {
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password,
-        type: req.body.type
-    }
 
-    const data = await user.addUser(newUser);
-    res.send(data);
+    addUser: async (req, res) => {
+
+        const result = schema.validate(req.body);
+        if (result.error) {
+            res.status(400).send(result.error.details[0].message);
+            return;
+        }
+
+        const newUser = {
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password,
+            type: req.body.type
+        }
+
+        const data = await user.addUser(newUser);
+        res.send(data);
     }
 
 }
