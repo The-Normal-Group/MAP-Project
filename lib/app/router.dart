@@ -5,6 +5,7 @@ import '../screens/register/register_screen.dart';
 import '../screens/main/main_screen.dart';
 import '../screens/tournament_organizers_menu/tournament_organizer_screen.dart';
 import '../screens/team_organizers_menu/team_organizer_screen.dart';
+import '../screens/update_tournament/update_tournament_screen.dart';
 
 Route<dynamic> createRoute(settings) {
   switch (settings.name) {
@@ -20,6 +21,8 @@ Route<dynamic> createRoute(settings) {
       return TournamentOrganizerScreen.route();
     case '/AddTeam':
       return TeamOrganizerScreen.route();
+    case '/updateTournament':
+      return UpdateTournamentScreen.route();
   }
 
   return null;
