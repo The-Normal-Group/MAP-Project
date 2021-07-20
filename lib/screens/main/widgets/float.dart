@@ -17,6 +17,6 @@ class Float extends StatelessWidget {
   }
 
   void _onPressPlusButton(BuildContext context) async {
-    _counterViewmodel.increaseCounter();
+    Navigator.pushNamed(context, '/AddTournament');
   }
 }

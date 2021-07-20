@@ -1,12 +1,10 @@
-import 'package:exercise3/models/tournament.dart';
-
 import '../../app/dependencies.dart';
 import '../../models/user.dart';
 import '../../models/token.dart';
 import '../rest.dart';
-import 'auth_service.dart';
+import './tournament_service.dart';
 
-class AuthServiceRest implements AuthService {
+class TournamentServiceRest implements TournamentService {
   RestService get rest => dependency();
 
   // Future<User> authenticate({String login, String password}) async {
@@ -23,7 +21,6 @@ class AuthServiceRest implements AuthService {
     print('$json');
     if (json == null || json.length == 0) return null;
 
-    rest.openSession(json['accessToken']);
     final _user = Token.fromJson(json);
     return _user;
   }
@@ -35,20 +32,5 @@ class AuthServiceRest implements AuthService {
     print("$response");
     final _user = User.fromJson(response);
     return _user;
-  }
-
-  Future<Tournament> createTournament(
-      {Tournament tournament, Token token}) async {
-    print('${tournament.toJson()}');
-    final headers = {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ${token.token}'
-    };
-    final response = await rest.post('tournaments',
-        data: tournament.toJson(), headers: headers);
-    if (response == null || response.length == 0) return null;
-    print("$response");
-    final _tournament = Tournament.fromJson(response);
-    return _tournament;
   }
 }

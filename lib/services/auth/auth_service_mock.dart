@@ -1,15 +1,20 @@
 import '../../models/user.dart';
 import 'auth_service.dart';
+import '../../models/token.dart';
+import '../../models/tournament.dart';
 
 class AuthServiceMock implements AuthService {
-  Future<User> authenticate({String login, String password}) async {
-    User _user = _users.firstWhere(
-        (user) => user.login == login && user.password == password,
-        orElse: () => null);
-    return _user;
+  Future<Token> authenticate({String login, String password}) async {
+    // User _user = _users.firstWhere(
+    //     (user) => user.login == login && user.password == password,
+    //     orElse: () => null);
+    // return _user;
+    return null;
   }
 
   Future<User> register({User user}) {}
+
+  Future<Tournament> createTournament({Tournament tournament}) {}
 }
 
 final _users = <User>[

@@ -1,6 +1,7 @@
 import '../../app/dependencies.dart';
 import '../../services/auth/auth_service.dart';
 import '../../models/user.dart';
+import '../../models/token.dart';
 import '../viewmodel.dart';
 
 class LoginViewmodel extends Viewmodel {
@@ -42,12 +43,13 @@ class LoginViewmodel extends Viewmodel {
     turnIdle();
   }
 
-  Future<User> authenticate() async {
+  Future<Token> authenticate() async {
     turnBusy();
-    final User _user =
+    final Token _token =
         await _service.authenticate(login: username, password: password);
+    final User _user = _token.user;
     if (_user == null) _showErrorMessage = true;
     turnIdle();
-    return _user;
+    return _token;
   }
 }

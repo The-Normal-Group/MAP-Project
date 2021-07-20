@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 import '../../../models/user.dart';
+import '../../../models/token.dart';
 import '../../view.dart';
 import '../login_viewmodel.dart';
 
 class Body extends StatelessWidget {
   void _onLogin(BuildContext context, LoginViewmodel viewmodel) async {
-    final User _user = await viewmodel.authenticate();
+    final Token _token = await viewmodel.authenticate();
+    final User _user = _token.user;
 
-    if (_user != null) Navigator.pop(context, _user);
+    if (_user != null) Navigator.pop(context, _token);
   }
 
   void _onCancel(BuildContext context, LoginViewmodel viewmodel) {
