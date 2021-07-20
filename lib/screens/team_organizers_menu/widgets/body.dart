@@ -69,7 +69,9 @@ class Body extends StatelessWidget {
             SizedBox(
               width: double.maxFinite,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/FindTournament');
+                },
                 child: Text(
                   "Find Tournament",
                   style: TextStyle(
@@ -91,7 +93,9 @@ class Body extends StatelessWidget {
             SizedBox(
               width: double.maxFinite,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/FindTeam');
+                },
                 child: Text(
                   "Find Team",
                   style: TextStyle(
