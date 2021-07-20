@@ -11,6 +11,15 @@ module.exports = {
         return user;
     },
 
+    login: async (username, password) => {
+        const res = await fetch(`${url}/users/?username=${username}&password=${password}`);
+        const user = await res.json();
+        if (user.length == 0) {
+            return null;
+        }
+        return user;
+    },
+
     getAllUsers: async () => {
         const res = await fetch(`${url}/users`);
         const users = await res.json();

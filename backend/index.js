@@ -4,8 +4,12 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
+
 const userRoute = require("./routes/User");
 app.use('/users', userRoute);
+
+const loginRoute = require("./routes/Login")
+app.use('/login', loginRoute);
 
 const tournamentRoute = require("./routes/Tournamnets");
 app.use('/tournaments', tournamentRoute);

@@ -4,13 +4,15 @@
       "id": 0,
       "username": "alex",
       "email": "alex@gmail.com",
-      "password": "123"
+      "password": "123",
+      "type": 0
     },
     {
       "id": 1,
       "username": "jessica",
       "email": "jessica@gmail.com",
-      "password": "123"
+      "password": "123",
+      "type": 0
     },
     {
       "username": "omar",
@@ -116,6 +118,34 @@
       "password": "123",
       "type": 0,
       "id": 16
+    },
+    {
+      "username": "fsa",
+      "email": "fsa@gmail.com",
+      "password": "123",
+      "type": 0,
+      "id": 17
+    },
+    {
+      "username": "register",
+      "email": "r@gmail.com",
+      "password": "123",
+      "type": 0,
+      "id": 18
+    },
+    {
+      "username": "register",
+      "email": "r@gmail.com",
+      "password": "123",
+      "type": 0,
+      "id": 19
+    },
+    {
+      "username": "newuser3",
+      "email": "test",
+      "password": "123",
+      "type": 0,
+      "id": 20
     }
   ],
   "tournaments": [
@@ -146,6 +176,20 @@
       "prizePool": "1234",
       "description": "bronze level tournament",
       "id": 3
+    },
+    {
+      "name": "lol tournament",
+      "skillLevel": "Advanced",
+      "prizePool": "1234",
+      "description": "bronze level tournament",
+      "id": 4
+    },
+    {
+      "name": "test",
+      "skillLevel": "Beginner",
+      "prizePool": 0,
+      "description": "plzwork",
+      "id": 5
     }
   ],
   "teams": [
@@ -184,6 +228,12 @@
       "capacity": "7",
       "description": "silver level tournament",
       "id": 5
+    },
+    {
+      "name": "team3",
+      "capacity": "7",
+      "description": "silver level tournament",
+      "id": 6
     }
   ]
 }

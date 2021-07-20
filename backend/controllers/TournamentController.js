@@ -2,17 +2,24 @@
 const Joi = require('joi');
 
 const user = require('../models/Tournaments');
+const auth = require("./authController");
 
 const schema = Joi.object({
-    name: Joi.string().min(3).required(),
-    skillLevel: Joi.string().min(3).required(),
+    name: Joi.string().required(),
+    skillLevel: Joi.string().required(),
     prizePool: Joi.number().required(),
-    description: Joi.string().min(3).required()
+    description: Joi.string().required(),
+    id: Joi.optional()
 });
 
 module.exports = {
 
     addTournament: async (req, res) => {
+
+        if(req.user.type!=1){
+            res.send(403);
+            return
+        }
 
         const result = schema.validate(req.body);
         if (result.error) {
