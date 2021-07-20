@@ -211,6 +211,20 @@
       "prizePool": 0,
       "description": "fsaf",
       "id": 8
+    },
+    {
+      "name": "fsafagagsagga",
+      "skillLevel": "Intermediate",
+      "prizePool": 0,
+      "description": "fsafas",
+      "id": 9
+    },
+    {
+      "name": "ffff",
+      "skillLevel": "Intermediate",
+      "prizePool": 0,
+      "description": "ggg",
+      "id": 10
     }
   ],
   "teams": [

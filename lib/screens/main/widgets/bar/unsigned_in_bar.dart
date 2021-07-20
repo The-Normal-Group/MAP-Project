@@ -27,6 +27,11 @@ class UnsignedInBar extends Bar {
     if (_user != null) {
       _viewmodel.token = _token;
       _viewmodel.user = _user;
+      if (_user.type == 1) {
+        Navigator.pushNamed(context, '/Organizer');
+      } else {
+        Navigator.pushNamed(context, '/Player');
+      }
     }
   }
 }

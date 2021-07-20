@@ -20,7 +20,7 @@ Route<dynamic> createRoute(settings) {
       return ManageAccountScreen.route();
     case '/Register':
       return RegisterScreen.route();
-    case '/AddTournament':
+    case '/Organizer':
       return TournamentOrganizerScreen.route();
     case '/AddTeam':
       return TeamOrganizerScreen.route();
