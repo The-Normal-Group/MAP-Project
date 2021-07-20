@@ -47,7 +47,9 @@ class Body extends StatelessWidget {
             SizedBox(
               width: double.maxFinite,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/ViewMyTeams');
+                },
                 child: Text(
                   "View My Teams",
                   style: TextStyle(
