@@ -190,6 +190,27 @@
       "prizePool": 0,
       "description": "plzwork",
       "id": 5
+    },
+    {
+      "name": "tournament2",
+      "skillLevel": "Advanced",
+      "prizePool": 0,
+      "description": "fsaf",
+      "id": 6
+    },
+    {
+      "name": "tournament3",
+      "skillLevel": "Advanced",
+      "prizePool": 0,
+      "description": "fsaf",
+      "id": 7
+    },
+    {
+      "name": "saff",
+      "skillLevel": "Intermediate",
+      "prizePool": 0,
+      "description": "fsaf",
+      "id": 8
     }
   ],
   "teams": [

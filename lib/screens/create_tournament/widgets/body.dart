@@ -125,7 +125,10 @@ class Body extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       if (formKey.currentState.validate()) {
-                        viewmodel.createTournament();
+                        final tournament = viewmodel.createTournament();
+                        if (tournament != null) {
+                          Navigator.pop(context, null);
+                        }
                       }
                     },
                     child: Text(
