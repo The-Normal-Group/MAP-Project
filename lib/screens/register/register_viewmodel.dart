@@ -1,10 +1,10 @@
 import '../../app/dependencies.dart';
-import '../../services/auth/auth_service_rest.dart';
+import '../../services/auth/auth_service.dart';
 import '../../models/user.dart';
 import '../viewmodel.dart';
 
 class RegisterViewmodel extends Viewmodel {
-  AuthServiceRest get _service => dependency();
+  AuthService get _service => dependency();
   User _user = User();
   bool _showPassword = false;
   bool _showErrorMessage = false;
@@ -80,7 +80,7 @@ class RegisterViewmodel extends Viewmodel {
     User req =
         User(email: email, login: username, type: type, password: password);
 
-    //final User _user = await _service.register(user: req);
+    final User _user = await _service.register(user: req);
 
     if (_user == null) _showErrorMessage = true;
     turnIdle();

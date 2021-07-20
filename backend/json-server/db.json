@@ -60,6 +60,62 @@
       "password": "1234",
       "type": 1,
       "id": 8
+    },
+    {
+      "username": "oma2r",
+      "email": "omar@gmail.com",
+      "password": "1234",
+      "type": 1,
+      "id": 9
+    },
+    {
+      "username": "oma2r",
+      "email": "omar@gmail.com",
+      "password": "1234",
+      "type": 1,
+      "id": 10
+    },
+    {
+      "username": "newuser",
+      "email": "new@gmail.com",
+      "password": "123",
+      "type": 1,
+      "id": 11
+    },
+    {
+      "username": "thisshouldwork",
+      "email": "shouldwork@gmail.com",
+      "password": "123",
+      "type": 1,
+      "id": 12
+    },
+    {
+      "username": "newuser3",
+      "email": "test@gmail.com",
+      "password": "123",
+      "type": 0,
+      "id": 13
+    },
+    {
+      "username": "alfsaffsa",
+      "email": "fsaf@gmail.com",
+      "password": "123",
+      "type": 0,
+      "id": 14
+    },
+    {
+      "username": "fsaf",
+      "email": "fsaf@gmail.com",
+      "password": "123",
+      "type": 0,
+      "id": 15
+    },
+    {
+      "username": "sfasfaf",
+      "email": "fsf@gmail.com",
+      "password": "123",
+      "type": 0,
+      "id": 16
     }
   ],
   "tournaments": [

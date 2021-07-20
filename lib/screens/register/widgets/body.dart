@@ -9,7 +9,7 @@ class Body extends StatelessWidget {
     final User _user = await viewmodel.register();
 
     print('$_user');
-    //if (_user != null) Navigator.pop(context, _user);
+    if (_user != null) Navigator.pop(context, _user);
   }
 
   void _onCancel(BuildContext context, RegisterViewmodel viewmodel) {

@@ -7,7 +7,8 @@ const schema = Joi.object({
     username: Joi.string().min(3).required(),
     email: Joi.string().min(3).required(),
     password: Joi.string().min(3).required(),
-    type: Joi.number().min(1).max(1).required()
+    type: Joi.number().min(0).max(1).required(),
+    id: Joi.optional()
 });
 
 module.exports = {
@@ -42,7 +43,7 @@ module.exports = {
         }
 
         const data = await user.addUser(newUser);
-        res.send(data);
+        res.status(201).send(data);
     }
 
 }

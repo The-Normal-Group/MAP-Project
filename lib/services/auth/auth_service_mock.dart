@@ -8,6 +8,8 @@ class AuthServiceMock implements AuthService {
         orElse: () => null);
     return _user;
   }
+
+  Future<User> register({User user}) {}
 }
 
 final _users = <User>[

@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 const userRoute = require("./routes/User");
-app.use('/user', userRoute);
+app.use('/users', userRoute);
 
 const tournamentRoute = require("./routes/Tournamnets");
 app.use('/tournaments', tournamentRoute);
