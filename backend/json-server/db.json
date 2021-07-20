@@ -225,6 +225,13 @@
       "prizePool": 0,
       "description": "ggg",
       "id": 10
+    },
+    {
+      "name": "testtest",
+      "skillLevel": "Intermediate",
+      "prizePool": 42525,
+      "description": "fsafasfas",
+      "id": 11
     }
   ],
   "teams": [

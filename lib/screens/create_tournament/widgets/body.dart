@@ -84,7 +84,7 @@ class Body extends StatelessWidget {
                     // contentPadding:
                   ),
                   onChanged: (value) {
-                    viewmodel.prizePool = value;
+                    viewmodel.prizePool = double.parse(value);
                   },
                   validator: (value) {
                     if (value.isEmpty) {
