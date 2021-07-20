@@ -21,10 +21,7 @@ class Body extends StatelessWidget {
               width: double.maxFinite,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      new MaterialPageRoute(
-                          builder: (context) => new CreateTeamScreen()));
+                  Navigator.pushNamed(context, "/CreateTeam");
                 },
                 child: Text(
                   "Create a Team",

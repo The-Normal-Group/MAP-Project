@@ -11,6 +11,7 @@ import '../screens/manage_account/manage_account_screen.dart';
 import '../screens/find_team/find_team_screen.dart';
 import '../screens/find_tournament/find_tournament_screen.dart';
 import '../screens/view_my_teams/view_my_teams_screen.dart';
+import '../screens/create_team/create_team_screen.dart';
 
 Route<dynamic> createRoute(settings) {
   switch (settings.name) {
@@ -36,6 +37,8 @@ Route<dynamic> createRoute(settings) {
       return FindTournamentScreen.route();
     case '/ViewMyTeams':
       return ViewMyTeamsScreen.route();
+    case '/CreateTeam':
+      return CreateTeamScreen.route();
   }
 
   return null;
