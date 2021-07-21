@@ -13,13 +13,15 @@ class Body extends StatelessWidget {
       viewmodel: _findTournamentViewmodel,
       builder: (_context, viewmodel, _child) {
         final FindTournamentViewmodel _viewmodel = viewmodel;
-
+        if (!_viewmodel.searched) {
+          _viewmodel.search("");
+          _viewmodel.searched = true;
+        }
         return ListView.builder(
-          itemCount: _viewmodel.itemCount,
+          itemCount: _viewmodel.searchCount,
           //itemCount: 3,
           itemBuilder: (context, index) {
-            final Tournament _tournament =
-                _viewmodel.getTournamentByIndex(index);
+            final Tournament _tournament = _viewmodel.getSearchByIndex(index);
             return Card(
               child: ListTile(
                 onTap: () {

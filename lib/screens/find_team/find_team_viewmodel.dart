@@ -15,7 +15,8 @@ class FindTeamViewmodel extends Viewmodel {
 
   String searchString = "";
 
-  bool first = true;
+  bool get searched => _userViewmodel.searchTe;
+  set searched(value) => update(() async => _userViewmodel.searchTe = value);
 
   get itemCount => _teams.length;
   get searchCount => teamsDisplayed.length;

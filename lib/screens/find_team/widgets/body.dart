@@ -12,6 +12,10 @@ class Body extends StatelessWidget {
       viewmodel: _findTeamViewmodel,
       builder: (_context, viewmodel, _child) {
         final FindTeamViewmodel _viewmodel = viewmodel;
+        if (!_viewmodel.searched) {
+          _viewmodel.search("");
+          _viewmodel.searched = true;
+        }
         return ListView.builder(
           itemCount: _viewmodel.searchCount,
           //itemCount: 3,

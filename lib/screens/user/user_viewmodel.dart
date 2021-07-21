@@ -1,3 +1,5 @@
+import 'package:exercise3/models/tournament.dart';
+
 import '../../app/dependencies.dart';
 import '../../services/auth/auth_service.dart';
 import '../../models/user.dart';
@@ -11,10 +13,23 @@ class UserViewmodel extends Viewmodel {
   Token _token;
   int _selectedTournament;
   int _selectedTeam;
+  bool _searchTo = false;
+  bool _searchTe = false;
+
   List<Team> _teamsDisplayed = List();
+  List<Tournament> _tournamentsDisplayed = List();
 
   get teamsDisplayed => _teamsDisplayed;
   set teamsDisplayed(value) => _teamsDisplayed = value;
+
+  get searchTe => _searchTe;
+  set searchTe(value) => _searchTe = value;
+
+  get searchTo => _searchTo;
+  set searchTo(value) => _searchTo = value;
+
+  get tournamentsDisplayed => _tournamentsDisplayed;
+  set tournamentsDisplayed(value) => _tournamentsDisplayed = value;
 
   get selectedTeam => _selectedTeam;
   set selectedTeam(value) => _selectedTeam = value;
