@@ -6,7 +6,7 @@ const controller = require("../controllers/TournamentController");
 const auth = require("../controllers/authController");
 
 router.post('/', auth.authenticateJWT, controller.addTournament);
-
+router.get('/', auth.authenticateJWT, controller.getAllTournaments);
 
 
 

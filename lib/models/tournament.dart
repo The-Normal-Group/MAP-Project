@@ -3,7 +3,7 @@ class Tournament {
       _id; // Use dynamic type because json-server id is int and firestore id is string
   String _name;
   String _skillLevel;
-  double _prizePool;
+  dynamic _prizePool;
   String _description;
 
   // ignore: unnecessary_getters_setters
@@ -27,7 +27,7 @@ class Tournament {
       {dynamic id,
       String name = '',
       String skillLevel = '',
-      double prizePool = 0,
+      dynamic prizePool = 0,
       String description = ''})
       : _id = id,
         _name = name,

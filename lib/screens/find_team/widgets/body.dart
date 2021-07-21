@@ -3,33 +3,32 @@ import 'package:flutter/material.dart';
 import '../../view.dart';
 import '../find_team_viewmodel.dart';
 
-
 class Body extends StatelessWidget {
   final FindTeamViewmodel _findTeamViewmodel = FindTeamViewmodel();
   @override
   Widget build(BuildContext context) {
     return View(
-        viewmodel: _findTeamViewmodel,
-        builder: (_context, viewmodel, _child) {
-          final FindTeamViewmodel _viewmodel = viewmodel;
+      viewmodel: _findTeamViewmodel,
+      builder: (_context, viewmodel, _child) {
+        final FindTeamViewmodel _viewmodel = viewmodel;
 
-          return ListView.builder(
-            //itemCount: _viewmodel.itemCount,
-            itemCount: 3,
-            itemBuilder: (context, index) {
-            //final Team _team = _viewmodel.getTeamByIndex(index);
-              return Card(
-                child: ListTile(
-                  onTap: (){
-                    //Navigator.pushNamed(context, ""); the name of the route of the new page you will create (PLEASE REFER TO THE DOC)
-                  },
-                  //title: Text(_team.name),
-                  title: Text("Team1"),
-                ),
-              );
-            },
-          );
-        },
-      );
+        return ListView.builder(
+          itemCount: _viewmodel.itemCount,
+          //itemCount: 3,
+          itemBuilder: (context, index) {
+            final Team _team = _viewmodel.getTeamByIndex(index);
+            return Card(
+              child: ListTile(
+                onTap: () {
+                  //Navigator.pushNamed(context, ""); the name of the route of the new page you will create (PLEASE REFER TO THE DOC)
+                },
+                title: Text(_team.name),
+                //title: Text("Team1"),
+              ),
+            );
+          },
+        );
+      },
+    );
   }
 }

@@ -6,7 +6,7 @@ const auth = require("./authController");
 
 const accessTokenSecret = 'fhsu48iah58iuas272hofaoifs532ilafjioasjiof74574suj';
 
-const userm = require('../models/User');
+const model = require('../models/User');
 
 const schema = Joi.object({
     username: Joi.string().min(3).required(),
@@ -18,7 +18,7 @@ const schema = Joi.object({
 
 module.exports = {
     getUser: async (req, res) => {
-        const data = await userm.getUser(parseInt(req.params.id));
+        const data = await model.getUser(parseInt(req.params.id));
         if (!data) {
             res.status(404).send('The course with the given ID was not found.');
             return;
@@ -27,7 +27,7 @@ module.exports = {
     },
 
     getAllUsers: async (req, res) => {
-        const data = await userm.getAllUsers();
+        const data = await model.getAllUsers();
         res.send(data);
     },
 
@@ -48,7 +48,7 @@ module.exports = {
             id: null
         }
 
-        const data = await userm.addUser(newUser);
+        const data = await model.addUser(newUser);
         res.status(201).send(data);
     },
 
@@ -56,13 +56,13 @@ module.exports = {
         // Filter user from the users array by username and password
         const username = req.body.username;
         const password = req.body.password;
-        const data = await userm.login(username, password);
+        const data = await model.login(username, password);
 
         console.log(data);
 
         if (data) {
         // Generate an access token
-        const accessToken = jwt.sign({ username: data[0].username,  type: data[0].type }, accessTokenSecret);
+        const accessToken = jwt.sign({ username: data[0].username,  type: data[0].type, id: data[0].id }, accessTokenSecret);
         
         var user = data[0];
 

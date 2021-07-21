@@ -67,4 +67,50 @@ class AuthServiceRest implements AuthService {
     final _team = Team.fromJson(response);
     return _team;
   }
+
+  Future<List<Team>> getTeamList(Token token) async {
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${token.token}'
+    };
+    final response = await rest.get('teams', headers: headers);
+    if (response == null || response.length == 0) return null;
+    print("$response");
+    final List<Team> _team = List();
+    for (var i in response) {
+      _team.add(Team.fromJson(i));
+    }
+    return _team;
+  }
+
+  Future<List<Tournament>> getTournamentList(Token token) async {
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${token.token}'
+    };
+    final response = await rest.get('tournaments', headers: headers);
+    if (response == null || response.length == 0) return null;
+    print("$response");
+    final List<Tournament> _tournament = List();
+    for (var i in response) {
+      _tournament.add(Tournament.fromJson(i));
+    }
+    return _tournament;
+  }
+
+  Future<List<Team>> getMyTeamsList(Token token) async {
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${token.token}'
+    };
+    final response =
+        await rest.get('teams/creator/${token.user.id}', headers: headers);
+    if (response == null || response.length == 0) return null;
+    print("$response");
+    final List<Team> _team = List();
+    for (var i in response) {
+      _team.add(Team.fromJson(i));
+    }
+    return _team;
+  }
 }

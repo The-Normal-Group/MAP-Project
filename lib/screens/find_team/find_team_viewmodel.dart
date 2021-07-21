@@ -3,9 +3,10 @@ import '../viewmodel.dart';
 import '../../app/dependencies.dart';
 import '../user/user_viewmodel.dart';
 import '../../models/token.dart';
-import '../../services/team_service.dart';
+import '../../services/auth/auth_service.dart';
 
 class FindTeamViewmodel extends Viewmodel {
+  AuthService get _service => dependency();
   List<Team> _teams;
 
   get itemCount => _teams.length;
@@ -23,7 +24,7 @@ class FindTeamViewmodel extends Viewmodel {
 
   void getTeamList() async {
     turnBusy();
-    //_teams = await _service.getTeamList();
+    _teams = await _service.getTeamList(token);
     turnIdle();
   }
 }

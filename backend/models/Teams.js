@@ -10,6 +10,52 @@ var con = mysql.createConnection({
 
 module.exports = {
 
+    getAllTeams: async () => {
+
+        return (async () => {
+            var sql = `SELECT * FROM teams`;
+            const result = await getTeams(sql);
+            console.log(result);
+            return result;
+        })();
+
+        function getTeams(sql) {
+            return new Promise((resolve, reject) => {
+            con.query(
+                sql,
+                (err, result) => {
+                    return err ? reject(err) : resolve(result);
+                }
+            );
+            });
+        }
+
+
+    },
+
+    getTeamsByCreator: async (id) => {
+
+        return (async () => {
+            var sql = `SELECT * FROM teams WHERE creator = '${id}'`;
+            const result = await getTeams(sql);
+            console.log(result);
+            return result;
+        })();
+
+        function getTeams(sql) {
+            return new Promise((resolve, reject) => {
+            con.query(
+                sql,
+                (err, result) => {
+                    return err ? reject(err) : resolve(result);
+                }
+            );
+            });
+        }
+
+
+    },
+
     addTeam: async (team) => {
 
         // con.connect(async function (err) {

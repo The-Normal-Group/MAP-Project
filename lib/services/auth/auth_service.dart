@@ -8,4 +8,7 @@ abstract class AuthService {
   Future<User> register({User user});
   Future<Tournament> createTournament({Tournament tournament, Token token});
   Future<Team> createTeam({Team team, Token token});
+  Future<List<Team>> getTeamList(Token token);
+  Future<List<Team>> getMyTeamsList(Token token);
+  Future<List<Tournament>> getTournamentList(Token token);
 }

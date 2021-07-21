@@ -12,6 +12,30 @@ var con = mysql.createConnection({
 
 module.exports = {
 
+
+    getAllTournaments: async () => {
+
+        return (async () => {
+            var sql = `SELECT * FROM tournaments`;
+            const result = await getTournaments(sql);
+            console.log(result);
+            return result;
+        })();
+
+        function getTournaments(sql) {
+            return new Promise((resolve, reject) => {
+            con.query(
+                sql,
+                (err, result) => {
+                    return err ? reject(err) : resolve(result);
+                }
+            );
+            });
+        }
+
+
+    },
+
     addTournament: async (tournament) => {
         // const res = await fetch(`${url}/tournaments`, {
         //     method: 'POST',

@@ -1,7 +1,7 @@
 
 const Joi = require('joi');
 
-const user = require('../models/Tournaments');
+const model = require('../models/Tournaments');
 const auth = require("./authController");
 
 const schema = Joi.object({
@@ -31,10 +31,16 @@ module.exports = {
             name: req.body.name,
             skillLevel: req.body.skillLevel,
             prizePool: req.body.prizePool,
-            description: req.body.description
+            description: req.body.description,
+            creator: req.user.id
         }
 
-        const data = await user.addTournament(newTournament);
+        const data = await model.addTournament(newTournament);
+        res.send(data);
+    },
+
+    getAllTournaments: async (req, res) => {
+        const data = await model.getAllTournaments();
         res.send(data);
     }
 

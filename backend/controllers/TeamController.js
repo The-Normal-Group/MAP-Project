@@ -1,7 +1,7 @@
 
 const Joi = require('joi'); 
 
-const user = require('../models/Teams');
+const model = require('../models/Teams');
 const auth = require("./authController");
 
 const schema = Joi.object({
@@ -29,11 +29,23 @@ module.exports = {
         const newTeam = {
             name: req.body.name,
             capacity: req.body.capacity,
-            description: req.body.description
+            description: req.body.description,
+            creator: req.user.id
         }
 
-        const data = await user.addTeam(newTeam);
+        const data = await model.addTeam(newTeam);
         console.log(data);
+        res.send(data);
+    },
+
+    getAllTeams: async (req, res) => {
+        const data = await model.getAllTeams();
+        res.send(data);
+    },
+
+    getTeamsByCreator: async (req, res) => {
+        var creatorId = req.params.id;
+        const data = await model.getTeamsByCreator(creatorId);
         res.send(data);
     }
 
