@@ -12,15 +12,20 @@ class UserViewmodel extends Viewmodel {
   User _user;
   Token _token;
   int _selectedTournament;
+  int _selectedUser;
   int _selectedTeam;
   bool _searchTo = false;
   bool _searchTe = false;
 
   List<Team> _teamsDisplayed = List();
   List<Tournament> _tournamentsDisplayed = List();
+  List<User> _usersDisplayed = List();
 
   get teamsDisplayed => _teamsDisplayed;
   set teamsDisplayed(value) => _teamsDisplayed = value;
+
+  get usersDisplayed => _usersDisplayed;
+  set usersDisplayed(value) => _usersDisplayed = value;
 
   get searchTe => _searchTe;
   set searchTe(value) => _searchTe = value;
@@ -36,6 +41,9 @@ class UserViewmodel extends Viewmodel {
 
   get selectedTournament => _selectedTournament;
   set selectedTournament(value) => _selectedTournament = value;
+
+  get selectedUser => _selectedUser;
+  set selectedUser(value) => _selectedUser = value;
 
   get token => _token;
   set token(value) => _token = value;

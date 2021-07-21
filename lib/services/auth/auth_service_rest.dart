@@ -83,6 +83,21 @@ class AuthServiceRest implements AuthService {
     return _team;
   }
 
+  Future<List<User>> getUserList(Token token) async {
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${token.token}'
+    };
+    final response = await rest.get('teams', headers: headers);
+    if (response == null || response.length == 0) return null;
+    print("$response");
+    final List<User> _user = List();
+    for (var i in response) {
+      _user.add(User.fromJson(i));
+    }
+    return _user;
+  }
+
   Future<List<Tournament>> getTournamentList(Token token) async {
     final headers = {
       'Content-Type': 'application/json',
@@ -129,6 +144,7 @@ class AuthServiceRest implements AuthService {
     }
     return _tournament;
   }
+  
 
   Future<Tournament> updateTournament(
       {Tournament tournament, Token token}) async {

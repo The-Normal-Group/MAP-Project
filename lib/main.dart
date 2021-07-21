@@ -11,7 +11,7 @@ void main() {
       title: 'MVVM Template',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      initialRoute: '/Register',
+      initialRoute: '/',
       onGenerateRoute: createRoute,
     ),
   );

@@ -37,7 +37,9 @@ class Body extends StatelessWidget {
             SizedBox(
               width: double.maxFinite,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, "/memberList");
+                },
                 child: Text(
                   "Manage Members",
                   style: TextStyle(
