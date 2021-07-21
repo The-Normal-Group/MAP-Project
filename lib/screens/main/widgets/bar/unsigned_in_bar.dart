@@ -28,9 +28,17 @@ class UnsignedInBar extends Bar {
       _viewmodel.token = _token;
       _viewmodel.user = _user;
       if (_user.type == 1) {
-        Navigator.pushNamed(context, '/Organizer');
+        var signout = await Navigator.pushNamed(context, '/Organizer');
+        print("$signout");
+        if (signout == "yes") {
+          _viewmodel.user = null;
+        }
       } else {
-        Navigator.pushNamed(context, '/AddTeam');
+        var signout = await Navigator.pushNamed(context, '/AddTeam');
+        print("$signout");
+        if (signout == "yes") {
+          _viewmodel.user = null;
+        }
       }
     }
   }

@@ -144,6 +144,28 @@ module.exports = {
         }
 
 
-    }
+    },
+
+    updateUser: async (user) => {
+
+        return (async () => {
+        console.log(user.id)
+          var sql = `UPDATE users set username = '${user.username}', password = '${user.password}', email = '${user.email}' WHERE id = '${user.id}'`;
+          const result = await UpdateUser(sql);
+          console.log(result);
+          return user;
+      })();
+
+      function UpdateUser(sql) {
+          return new Promise((resolve, reject) => {
+          con.query(
+              sql,
+              (err, result) => {
+                  return err ? reject(err) : resolve(result);
+              }
+          );
+          });
+      }
+  }
 
 }

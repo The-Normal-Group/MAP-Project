@@ -16,6 +16,14 @@ const schema = Joi.object({
     id: Joi.optional()
 });
 
+const schema2 = Joi.object({
+    username: Joi.string().min(3).required(),
+    email: Joi.string().min(3).required(),
+    password: Joi.string().min(3).required(),
+    type: Joi.optional(),
+    id: Joi.optional()
+});
+
 module.exports = {
     getUser: async (req, res) => {
         const data = await model.getUser(parseInt(req.params.id));
@@ -52,6 +60,7 @@ module.exports = {
         res.status(201).send(data);
     },
 
+
     login: async (req, res) => {
         // Filter user from the users array by username and password
         const username = req.body.username;
@@ -73,6 +82,26 @@ module.exports = {
         } else {
             res.send('Username or password incorrect');
         }
+    },
+
+    updateUser: async (req, res) => {
+
+        const result = schema2.validate(req.body);
+        if (result.error) {
+            res.status(400).send(result.error.details[0].message);
+            return;
+        }
+
+        const newUser = {
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password,
+            type: null,
+            id: req.user.id
+        }
+
+        const data = await model.updateUser(newUser);
+        res.send(data);
     }
 
 }

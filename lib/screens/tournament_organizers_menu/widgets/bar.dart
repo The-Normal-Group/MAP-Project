@@ -10,8 +10,19 @@ class Bar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: Text("UTM Play"),
-      leading: IconButton(icon: Icon(Icons.menu), onPressed: () {}),
-      actions: [IconButton(icon: Icon(Icons.menu), onPressed: () {})],
+      leading: IconButton(
+          icon: Icon(Icons.account_circle),
+          onPressed: () {
+            Navigator.pushNamed(context, '/manageAccount');
+          }),
+      actions: [
+        IconButton(
+            icon: Icon(Icons.logout),
+            color: Colors.red,
+            onPressed: () {
+              Navigator.pop(context, "yes");
+            })
+      ],
       centerTitle: true,
     );
   }

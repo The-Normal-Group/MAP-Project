@@ -19,17 +19,6 @@ class MainScreen extends StatelessWidget {
         child: View(
           viewmodel: MainViewmodel(),
           builder: (_, mainViewmodel, __) {
-            if (mainViewmodel.isUserSignedIn) {
-              final _counterViewmodel =
-                  CounterViewmodel(mainViewmodel: mainViewmodel);
-
-              return Scaffold(
-                appBar: SignedInBar(mainViewmodel),
-                body: Body(_counterViewmodel),
-                floatingActionButton: Float(_counterViewmodel),
-              );
-            }
-
             return Scaffold(appBar: UnsignedInBar(mainViewmodel));
           },
         ),

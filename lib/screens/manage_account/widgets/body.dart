@@ -7,10 +7,10 @@ import '../manage_account_viewmodel.dart';
 class Body extends StatelessWidget {
   void _onManageAccount(
       BuildContext context, ManageAccountViewmodel viewmodel) async {
-    final User _user = await viewmodel.register(); // here
+    final User _user = await viewmodel.updateUser(); // here
 
     print('$_user');
-    if (_user != null) Navigator.pop(context, _user);
+    if (_user != null) Navigator.pop(context);
   }
 
   void _onCancel(BuildContext context, ManageAccountViewmodel viewmodel) {
@@ -87,7 +87,7 @@ class Body extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ElevatedButton(
-          child: Text('ManageAccount'),
+          child: Text('Update Account'),
           onPressed: () => _onManageAccount(context, viewmodel),
         ),
         SizedBox(width: 10.0),

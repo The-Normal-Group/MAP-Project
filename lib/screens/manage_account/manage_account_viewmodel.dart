@@ -2,6 +2,8 @@ import '../../app/dependencies.dart';
 import '../../services/auth/auth_service.dart';
 import '../../models/user.dart';
 import '../viewmodel.dart';
+import '../user/user_viewmodel.dart';
+import '../../models/token.dart';
 
 class ManageAccountViewmodel extends Viewmodel {
   AuthService get _service => dependency();
@@ -9,6 +11,11 @@ class ManageAccountViewmodel extends Viewmodel {
   bool _showPassword = false;
   bool _showErrorMessage = false;
   String _confPassword = "";
+
+  UserViewmodel get _userViewmodel => dependency();
+  Token get token => _userViewmodel.token;
+  set token(Token value) => update(() async => _userViewmodel.token = value);
+  int get id => _userViewmodel.user.id;
 
   get user => _user;
   set user(value) => _user = value;
@@ -75,12 +82,13 @@ class ManageAccountViewmodel extends Viewmodel {
     turnIdle();
   }
 
-  Future<User> register() async {
+  Future<User> updateUser() async {
     turnBusy();
     User req =
         User(email: email, login: username, type: type, password: password);
+    req.id = id;
 
-    final User _user = await _service.register(user: req);
+    final User _user = await _service.updateUser(user: req, token: token);
 
     if (_user == null) _showErrorMessage = true;
     turnIdle();

@@ -14,7 +14,7 @@ class AuthServiceMock implements AuthService {
   }
 
   Future<User> register({User user}) {}
-  
+
   Future<Tournament> createTournament({Tournament tournament, Token token}) {}
   Future<Team> createTeam({Team team, Token token}) {}
 }

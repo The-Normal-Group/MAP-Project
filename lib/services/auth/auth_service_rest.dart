@@ -164,4 +164,18 @@ class AuthServiceRest implements AuthService {
     final _team = Team.fromJson(response);
     return _team;
   }
+
+  Future<User> updateUser({User user, Token token}) async {
+    print('${user.toJson()}');
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${token.token}'
+    };
+    final response =
+        await rest.put('users', data: user.toJson(), headers: headers);
+    if (response == null || response.length == 0) return null;
+    print("$response");
+    final _user = User.fromJson(response);
+    return _user;
+  }
 }

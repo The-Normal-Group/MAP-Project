@@ -9,6 +9,7 @@ const controller = require("../controllers/UserController");
 const auth = require("../controllers/authController");
 
 router.get('/', auth.authenticateJWT, controller.getAllUsers);
+router.put('/', auth.authenticateJWT, controller.updateUser);
 router.get('/:id', auth.authenticateJWT, controller.getUser);
 router.post('/', controller.addUser);
 // router.put('/:id', controller.addUser);
