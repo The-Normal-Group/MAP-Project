@@ -125,7 +125,10 @@ class Body extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       if (formKey.currentState.validate()) {
-                        print("Proceed to submit !");
+                        final tournament = viewmodel.updateTournament();
+                        if (tournament != null) {
+                          Navigator.pop(context, null);
+                        }
                       }
                     },
                     child: Text(

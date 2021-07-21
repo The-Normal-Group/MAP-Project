@@ -8,6 +8,14 @@ class UserViewmodel extends Viewmodel {
   AuthService get _service => dependency();
   User _user;
   Token _token;
+  int _selectedTournament;
+  int _selectedTeam;
+
+  get selectedTeam => _selectedTeam;
+  set selectedTeam(value) => _selectedTeam = value;
+
+  get selectedTournament => _selectedTournament;
+  set selectedTournament(value) => _selectedTournament = value;
 
   get token => _token;
   set token(value) => _token = value;

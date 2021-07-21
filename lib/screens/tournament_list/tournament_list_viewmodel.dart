@@ -1,29 +1,33 @@
 import '../../models/tournament.dart';
 import '../viewmodel.dart';
+import '../../app/dependencies.dart';
+import '../user/user_viewmodel.dart';
+import '../../models/token.dart';
+import '../../services/auth/auth_service.dart';
 
 class TournamentListViewmodel extends Viewmodel {
-  Tournament _tournament = Tournament();
+  AuthService get _service => dependency();
+  List<Tournament> _tournaments;
 
-  get tournament => _tournament;
-  set tournament(value) => _tournament = value;
+  get itemCount => _tournaments.length;
+  Tournament getTournamentByIndex(index) => _tournaments[index];
 
-  get name => _tournament.name;
-  set name(value) {
-    _tournament.name = value;
+  UserViewmodel get _userViewmodel => dependency();
+  Token get token => _userViewmodel.token;
+
+  set id(value) => _userViewmodel.selectedTournament = value;
+
+  set token(Token value) => update(() async => _userViewmodel.token = value);
+
+  //final TeamService _service = dependency();
+
+  TournamentListViewmodel() {
+    getTournamentList();
   }
 
-  get skillLevel => _tournament.skillLevel;
-  set skillLevel(value) {
-    _tournament.skillLevel = value;
-  }
-
-  get prizePool => _tournament.prizePool;
-  set prizePool(value) {
-    _tournament.prizePool = value;
-  }
-
-  get description => _tournament.description;
-  set description(value) {
-    _tournament.description = value;
+  void getTournamentList() async {
+    turnBusy();
+    _tournaments = await _service.getTournamentByCreator(token);
+    turnIdle();
   }
 }

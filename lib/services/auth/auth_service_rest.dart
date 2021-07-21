@@ -113,4 +113,38 @@ class AuthServiceRest implements AuthService {
     }
     return _team;
   }
+
+  Future<List<Tournament>> getTournamentByCreator(Token token) async {
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${token.token}'
+    };
+    final response = await rest.get('tournaments/creator/${token.user.id}',
+        headers: headers);
+    if (response == null || response.length == 0) return null;
+    print("$response");
+    final List<Tournament> _tournament = List();
+    for (var i in response) {
+      _tournament.add(Tournament.fromJson(i));
+    }
+    return _tournament;
+  }
+
+  Future<Tournament> updateTournament(
+      {Tournament tournament, Token token}) async {
+    print('${tournament.toJson()}');
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${token.token}'
+    };
+    var data = tournament.toJson();
+    print('$data');
+
+    final response =
+        await rest.put('tournaments', data: data, headers: headers);
+    if (response == null || response.length == 0) return null;
+    print("$response");
+    final _tournament = Tournament.fromJson(response);
+    return _tournament;
+  }
 }

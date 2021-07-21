@@ -11,4 +11,6 @@ abstract class AuthService {
   Future<List<Team>> getTeamList(Token token);
   Future<List<Team>> getMyTeamsList(Token token);
   Future<List<Tournament>> getTournamentList(Token token);
+  Future<List<Tournament>> getTournamentByCreator(Token token);
+  Future<Tournament> updateTournament({Tournament tournament, Token token});
 }

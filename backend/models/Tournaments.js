@@ -36,6 +36,29 @@ module.exports = {
 
     },
 
+    getTournamentsByCreator: async (id) => {
+
+        return (async () => {
+            var sql = `SELECT * FROM tournaments WHERE creator = '${id}'`;
+            const result = await getTournaments(sql);
+            console.log(result);
+            return result;
+        })();
+
+        function getTournaments(sql) {
+            return new Promise((resolve, reject) => {
+            con.query(
+                sql,
+                (err, result) => {
+                    return err ? reject(err) : resolve(result);
+                }
+            );
+            });
+        }
+
+
+    },
+
     addTournament: async (tournament) => {
         // const res = await fetch(`${url}/tournaments`, {
         //     method: 'POST',
@@ -71,6 +94,28 @@ module.exports = {
                 sql,
                 (err, result) => {
                     return err ? reject(err) : resolve(result.insertId);
+                }
+            );
+            });
+        }
+    },
+
+    updateTournament: async (tournament) => {
+
+          return (async () => {
+              console.log(tournament.id)
+            var sql = `UPDATE tournaments set name = '${tournament.name}', skillLevel = '${tournament.skillLevel}', prizePool = '${tournament.prizePool}', description = '${tournament.description}' WHERE id = '${tournament.id}'`;
+            const result = await UpdateTournament(sql);
+            console.log(result);
+            return tournament;
+        })();
+
+        function UpdateTournament(sql) {
+            return new Promise((resolve, reject) => {
+            con.query(
+                sql,
+                (err, result) => {
+                    return err ? reject(err) : resolve(result);
                 }
             );
             });
