@@ -20,6 +20,9 @@ class Body extends StatelessWidget {
             //final Team _team = _viewmodel.getTeamByIndex(index);
               return Card(
                 child: ListTile(
+                  onTap: (){
+                    //Navigator.pushNamed(context, ""); the name of the route of the new page you will create (PLEASE REFER TO THE DOC)
+                  },
                   //title: Text(_team.name),
                   title: Text("Team1"),
                 ),
