@@ -7,6 +7,7 @@ const auth = require("../controllers/authController");
 
 
 router.post('/', auth.authenticateJWT, controller.addTeam);
+router.put('/', auth.authenticateJWT, controller.updateTeam);
 router.get('/', auth.authenticateJWT, controller.getAllTeams);
 router.get('/creator/:id', auth.authenticateJWT, controller.getTeamsByCreator);
 

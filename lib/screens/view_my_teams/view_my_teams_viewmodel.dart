@@ -15,6 +15,7 @@ class ViewMyTeamsViewmodel extends Viewmodel {
   UserViewmodel get _userViewmodel => dependency();
   Token get token => _userViewmodel.token;
   set token(Token value) => update(() async => _userViewmodel.token = value);
+  set id(value) => _userViewmodel.selectedTeam = value;
 
   //final TeamService _service = dependency();
 

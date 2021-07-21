@@ -87,6 +87,28 @@ module.exports = {
             });
         }
 
-    }
+    },
+
+    updateTeam: async (team) => {
+
+        return (async () => {
+            console.log(team.id)
+          var sql = `UPDATE teams set name = '${team.name}', capacity = '${team.capacity}', description = '${team.description}' WHERE id = '${team.id}'`;
+          const result = await UpdateTeam(sql);
+          console.log(result);
+          return team;
+      })();
+
+      function UpdateTeam(sql) {
+          return new Promise((resolve, reject) => {
+          con.query(
+              sql,
+              (err, result) => {
+                  return err ? reject(err) : resolve(result);
+              }
+          );
+          });
+      }
+  }
 
 }
