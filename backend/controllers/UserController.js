@@ -44,7 +44,8 @@ module.exports = {
             username: req.body.username,
             email: req.body.email,
             password: req.body.password,
-            type: req.body.type
+            type: req.body.type,
+            id: null
         }
 
         const data = await userm.addUser(newUser);
@@ -57,11 +58,13 @@ module.exports = {
         const password = req.body.password;
         const data = await userm.login(username, password);
 
+        console.log(data);
+
         if (data) {
         // Generate an access token
-        const accessToken = jwt.sign({ username: data[0].username,  type: data[0].type }, accessTokenSecret);
+        const accessToken = jwt.sign({ username: data.username,  type: data.type }, accessTokenSecret);
         
-        var user = data[0];
+        var user = data;
 
         res.status(201).json({
             user,
