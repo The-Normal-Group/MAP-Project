@@ -36,6 +36,10 @@ module.exports = {
 
     getAllUsers: async (req, res) => {
         const data = await model.getAllUsers();
+        if (!data) {
+            res.status(404).send('The course with the given ID was not found.');
+            return;
+        }
         res.send(data);
     },
 
@@ -102,6 +106,45 @@ module.exports = {
 
         const data = await model.updateUser(newUser);
         res.send(data);
-    }
+    },
+
+    getUsersByTeam: async (req, res) => {
+        const data = await model.getUsersByTeam(parseInt(req.params.team));
+        if (!data) {
+            res.status(404).send('Team does not exist or has no members');
+            return;
+        }
+        res.status(200).send(data);
+    },
+    getUsersByNoTeam: async (req, res) => {
+        const data = await model.getUsersByNoTeam();
+        if (!data) {
+            res.status(404).send('Team does not exist or has no members');
+            return;
+        }
+        res.status(200).send(data);
+    },
+
+    removeUserTeam: async (req, res) => {
+        const data = await model.removeUserTeam(parseInt(req.params.user));
+        console.log(data);
+        if (!data) {
+            res.status(404).send('User not found');
+            return;
+        }
+        const result = await model.getUser(parseInt(req.params.user));
+        res.send(result);
+    },
+
+    updateUserTeam: async (req, res) => {
+        const data = await model.updateUserTeam(parseInt(req.params.user), parseInt(req.params.team));
+        if (!data) {
+            res.status(404).send('User not found');
+            return;
+        }
+        const result = await model.getUser(parseInt(req.params.user));
+        console.log(result);
+        res.status(200).send(result);
+    },
 
 }

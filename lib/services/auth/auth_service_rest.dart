@@ -88,12 +88,12 @@ class AuthServiceRest implements AuthService {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ${token.token}'
     };
-    final response = await rest.get('teams', headers: headers);
+    final response = await rest.get('users', headers: headers);
     if (response == null || response.length == 0) return null;
     print("$response");
     final List<User> _user = List();
     for (var i in response) {
-      _user.add(User.fromJson(i));
+      _user.add(User.fromJsonWithId(i));
     }
     return _user;
   }
@@ -144,7 +144,6 @@ class AuthServiceRest implements AuthService {
     }
     return _tournament;
   }
-  
 
   Future<Tournament> updateTournament(
       {Tournament tournament, Token token}) async {
@@ -192,6 +191,53 @@ class AuthServiceRest implements AuthService {
     if (response == null || response.length == 0) return null;
     print("$response");
     final _user = User.fromJson(response);
+    return _user;
+  }
+
+  Future<List<User>> getUsersByTeam(int team, Token token) async {
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${token.token}'
+    };
+    final response = await rest.get('users/team/$team', headers: headers);
+    if (response == null || response.length == 0) return null;
+    print("$response");
+    final List<User> _user = List();
+    for (var i in response) {
+      _user.add(User.fromJsonWithId(i));
+    }
+    return _user;
+  }
+
+  Future<List<User>> removeUserTeam(int user, Token token) async {
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${token.token}'
+    };
+
+    final response = await rest.delete('users/team/$user', headers: headers);
+    if (response == null || response.length == 0) return null;
+    print("$response");
+    final List<User> _user = List();
+    for (var i in response) {
+      _user.add(User.fromJsonWithId(i));
+    }
+    return _user;
+  }
+
+  Future<List<User>> addUserTeam(int user, int team, Token token) async {
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${token.token}'
+    };
+
+    final response = await rest.put('users/$user/team/$team', headers: headers);
+    if (response == null || response.length == 0) return null;
+    print("$response");
+    final List<User> _user = List();
+    for (var i in response) {
+      _user.add(User.fromJsonWithId(i));
+    }
     return _user;
   }
 }

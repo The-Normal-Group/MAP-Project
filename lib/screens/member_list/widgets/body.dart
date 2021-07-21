@@ -23,11 +23,10 @@ class Body extends StatelessWidget {
             return Card(
               child: ListTile(
                 onTap: () {
-                  _viewmodel.id = _user.id;
                   //Navigator.pushNamed(context, '');
                 },
                 //title: Text(_user.login),
-                title: Text("Team1"),
+                title: Text("${_user.login}"),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
@@ -38,7 +37,10 @@ class Body extends StatelessWidget {
                         color: Colors.red[900],
                       ),
                       onPressed: () {
-                        //   delete function
+                        print('user id in body ${_user.id}');
+                        _viewmodel.tobeDeleted = _user.id;
+                        _viewmodel.remove();
+                        Navigator.pop(context);
                       },
                     )
                   ],
@@ -46,10 +48,7 @@ class Body extends StatelessWidget {
               ),
             );
           },
-          
         );
-
-        
       },
     );
   }

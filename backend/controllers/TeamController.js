@@ -74,4 +74,43 @@ module.exports = {
         res.send(data);
     },
 
+    getTeamsByTournament: async (req, res) => {
+        const data = await model.getTeamsByTournament(parseInt(req.params.tournament));
+        if (!data) {
+            res.status(404).send('Team does not exist or has no members');
+            return;
+        }
+        res.status(200).send(data);
+    },
+    getUsersByNoTeam: async (req, res) => {
+        const data = await model.getteamsByNoTournament();
+        if (!data) {
+            res.status(404).send('Team does not exist or has no members');
+            return;
+        }
+        res.status(200).send(data);
+    },
+
+    removeTeamTournament: async (req, res) => {
+        const data = await model.removeTeamTournament(parseInt(req.params.team));
+        console.log(data);
+        if (!data) {
+            res.status(404).send('User not found');
+            return;
+        }
+        const result = await model.getTeam(parseInt(req.params.team));
+        res.send(result);
+    },
+
+    updateUserTeam: async (req, res) => {
+        const data = await model.updateUserTeam(parseInt(req.params.user), parseInt(req.params.team));
+        if (!data) {
+            res.status(404).send('User not found');
+            return;
+        }
+        const result = await model.getTeam(parseInt(req.params.user));
+        console.log(result);
+        res.status(200).send(result);
+    },
+
 }

@@ -50,6 +50,15 @@ class User {
           password: json['password'],
         );
 
+  User.fromJsonWithId(Map<String, dynamic> json)
+      : this(
+          id: json['id'],
+          type: json['type'],
+          email: json['email'],
+          login: json['username'],
+          password: json['password'],
+        );
+
   Map<String, dynamic> toJson() => {
         'id': id,
         'type': type,

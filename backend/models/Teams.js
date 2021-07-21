@@ -109,6 +109,98 @@ module.exports = {
           );
           });
       }
-  }
+  },
+
+  updateTeamTournament: async (team, tournament) => {
+
+    return (async () => {
+    console.log(team)
+    console.log(tournament)
+      var sql = `UPDATE teams set tournament = '${tournament}' WHERE id = '${team}'`;
+      const result = await UpdateUser(sql);
+      console.log(result);
+      return team;
+  })();
+
+  function UpdateUser(sql) {
+      return new Promise((resolve, reject) => {
+      con.query(
+          sql,
+          (err, result) => {
+              return err ? reject(err) : resolve(result);
+          }
+      );
+      });
+    }
+  },
+
+  removeTeamTournament: async (team) => {
+
+    return (async () => {
+    console.log(team)
+      var sql = `UPDATE teams set tournament = null WHERE id = '${team}'`;
+      const result = await UpdateUser(sql);
+      console.log(result);
+      team.team = null;
+      return team;
+  })();
+
+  function UpdateUser(sql) {
+      return new Promise((resolve, reject) => {
+      con.query(
+          sql,
+          (err, result) => {
+              return err ? reject(err) : resolve(result);
+          }
+      );
+      });
+    }
+  },
+
+  getTeamsByTournament: async (tournament) => {
+
+    return (async () => {
+        var sql = `SELECT * FROM teams WHERE tournament = '${tournament}'`;
+        const result = await getUsers(sql);
+        console.log(result);
+        return result;
+    })();
+
+    function getUsers(sql) {
+        return new Promise((resolve, reject) => {
+        con.query(
+            sql,
+            (err, result) => {
+                return err ? reject(err) : resolve(result);
+            }
+        );
+        });
+    }
+
+
+    },
+
+    getteamsByNoTournament: async () => {
+
+        return (async () => {
+            var sql = `SELECT * FROM teams WHERE tournament IS NULL`;
+            const result = await getUsers(sql);
+            console.log(result);
+            return result;
+        })();
+    
+        function getUsers(sql) {
+            return new Promise((resolve, reject) => {
+            con.query(
+                sql,
+                (err, result) => {
+                    return err ? reject(err) : resolve(result);
+                }
+            );
+            });
+        }
+    
+    
+    },
 
 }

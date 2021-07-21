@@ -166,6 +166,101 @@ module.exports = {
           );
           });
       }
-  }
+  },
+
+  updateUserTeam: async (user, team) => {
+
+    return (async () => {
+    console.log(user)
+    console.log(team)
+      var sql = `UPDATE users set team = '${team}' WHERE id = '${user}'`;
+      const result = await UpdateUser(sql);
+      console.log(result);
+      return user;
+  })();
+
+  function UpdateUser(sql) {
+      return new Promise((resolve, reject) => {
+      con.query(
+          sql,
+          (err, result) => {
+              return err ? reject(err) : resolve(result);
+          }
+      );
+      });
+    }
+  },
+
+  removeUserTeam: async (user) => {
+
+    return (async () => {
+    console.log(user)
+      var sql = `UPDATE users set team = null WHERE id = '${user}'`;
+      const result = await UpdateUser(sql);
+      console.log(result);
+      user.team = null;
+      return user;
+  })();
+
+  function UpdateUser(sql) {
+      return new Promise((resolve, reject) => {
+      con.query(
+          sql,
+          (err, result) => {
+              return err ? reject(err) : resolve(result);
+          }
+      );
+      });
+    }
+  },
+
+  getUsersByTeam: async (team) => {
+
+    return (async () => {
+        var sql = `SELECT * FROM users WHERE team = '${team}'`;
+        const result = await getUsers(sql);
+        console.log(result);
+        return result;
+    })();
+
+    function getUsers(sql) {
+        return new Promise((resolve, reject) => {
+        con.query(
+            sql,
+            (err, result) => {
+                return err ? reject(err) : resolve(result);
+            }
+        );
+        });
+    }
+
+
+    },
+
+    getUsersByNoTeam: async () => {
+
+        return (async () => {
+            var sql = `SELECT * FROM users WHERE team IS NULL`;
+            const result = await getUsers(sql);
+            console.log(result);
+            return result;
+        })();
+    
+        function getUsers(sql) {
+            return new Promise((resolve, reject) => {
+            con.query(
+                sql,
+                (err, result) => {
+                    return err ? reject(err) : resolve(result);
+                }
+            );
+            });
+        }
+    
+    
+    },
+
+  
+
 
 }

@@ -130,7 +130,7 @@ class RestService {
   delete(String endpoint,
           {dynamic data, Map<String, String> headers, Encoding encoding}) =>
       _httpRequest(
-          (uri, headers, data, encoding) => http.patch(
+          (uri, headers, data, encoding) => http.delete(
                 uri,
                 headers: headers,
                 body: data,
