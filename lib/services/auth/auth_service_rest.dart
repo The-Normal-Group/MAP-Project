@@ -240,4 +240,70 @@ class AuthServiceRest implements AuthService {
     }
     return _user;
   }
+
+  Future<List<Team>> getTeamsByTournament(int tournament, Token token) async {
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${token.token}'
+    };
+    final response =
+        await rest.get('teams/tournament/$tournament', headers: headers);
+    if (response == null || response.length == 0) return null;
+    print("$response");
+    final List<Team> _team = List();
+    for (var i in response) {
+      _team.add(Team.fromJson(i));
+    }
+    return _team;
+  }
+
+  Future<List<Team>> removeTeamTournament(int team, Token token) async {
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${token.token}'
+    };
+
+    final response =
+        await rest.delete('teams/tournament/$team', headers: headers);
+    if (response == null || response.length == 0) return null;
+    print("$response");
+    final List<Team> _team = List();
+    for (var i in response) {
+      _team.add(Team.fromJson(i));
+    }
+    return _team;
+  }
+
+  Future<List<Team>> addTeamTournament(
+      int team, int tournament, Token token) async {
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${token.token}'
+    };
+
+    final response =
+        await rest.put('teams/$team/tournament/$tournament', headers: headers);
+    if (response == null || response.length == 0) return null;
+    print("$response");
+    final List<Team> _team = List();
+    for (var i in response) {
+      _team.add(Team.fromJson(i));
+    }
+    return _team;
+  }
+
+  Future<List<Team>> getTeamsByNoTournament(Token token) async {
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${token.token}'
+    };
+    final response = await rest.get('teams/tournament/', headers: headers);
+    if (response == null || response.length == 0) return null;
+    print("$response");
+    final List<Team> _team = List();
+    for (var i in response) {
+      _team.add(Team.fromJson(i));
+    }
+    return _team;
+  }
 }

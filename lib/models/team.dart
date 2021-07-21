@@ -20,10 +20,7 @@ class Team {
   set description(value) => _description = value;
 
   Team(
-      {dynamic id,
-      String name = '',
-      int capacity = 0,
-      String description = ''})
+      {dynamic id, String name = '', int capacity = 0, String description = ''})
       : _id = id,
         _name = name,
         _capacity = capacity,

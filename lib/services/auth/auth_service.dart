@@ -19,4 +19,8 @@ abstract class AuthService {
   Future<List<User>> getUsersByTeam(int team, Token token);
   Future<List<User>> removeUserTeam(int user, Token token);
   Future<List<User>> addUserTeam(int user, int team, Token token);
+  Future<List<Team>> getTeamsByTournament(int tournament, Token token);
+  Future<List<Team>> removeTeamTournament(int team, Token token);
+  Future<List<Team>> addTeamTournament(int team, int tournament, Token token);
+  Future<List<Team>> getTeamsByNoTournament(Token token);
 }

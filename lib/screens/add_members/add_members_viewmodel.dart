@@ -53,11 +53,9 @@ class AddMembersViewmodel extends Viewmodel {
     print("$teamsDisplayed");
   }
 
-  void addMember(int index) async {
-    var userId = _users[index].id;
+  void addMember(int id) async {
     turnBusy();
-    _users =
-        await _service.addUserTeam(userId, _userViewmodel.selectedTeam, token);
+    _users = await _service.addUserTeam(id, _userViewmodel.selectedTeam, token);
     turnIdle();
   }
 }

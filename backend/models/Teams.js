@@ -10,6 +10,29 @@ var con = mysql.createConnection({
 
 module.exports = {
 
+    getTeam: async (id) => {
+
+        return (async () => {
+            var sql = `SELECT * FROM teams WHERE id = '${id}'`;
+            const result = await findTeam(sql);
+            console.log(result);
+            return result;
+        })();
+
+        function findTeam(sql) {
+            return new Promise((resolve, reject) => {
+            con.query(
+                sql,
+                (err, result) => {
+                    console.log(result)
+                    return err ? reject(err) : resolve(result);
+                }
+            );
+            });
+        }
+
+    },
+
     getAllTeams: async () => {
 
         return (async () => {

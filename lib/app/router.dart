@@ -18,6 +18,8 @@ import '../screens/manage_optionsTeam/manage_options_screen.dart';
 import '../screens/update_team/update_team_screen.dart';
 import '../screens/member_list/member_list_screen.dart';
 import '../screens/add_members/add_members_screen.dart';
+import '../screens/add_teams/add_teams_screen.dart';
+import '../screens/team_list/team_list_screen.dart';
 
 Route<dynamic> createRoute(settings) {
   switch (settings.name) {
@@ -43,6 +45,10 @@ Route<dynamic> createRoute(settings) {
       return TeamOrganizerScreen.route();
     case '/AddMember':
       return AddMembersScreen.route();
+    case '/addParticipant':
+      return AddTeamsScreen.route();
+    case '/teamsList':
+      return TeamListScreen.route();
     case '/updateTournament':
       return UpdateTournamentScreen.route();
     case '/FindTeam':

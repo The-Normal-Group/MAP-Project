@@ -1,27 +1,42 @@
-import '../../models/team.dart';
+import 'package:exercise3/models/team.dart';
+
+import '../../models/user.dart';
 import '../viewmodel.dart';
 import '../../app/dependencies.dart';
 import '../user/user_viewmodel.dart';
 import '../../models/token.dart';
 import '../../services/auth/auth_service.dart';
 
-class FindTeamViewmodel extends Viewmodel {
+class AddTeamsViewmodel extends Viewmodel {
   AuthService get _service => dependency();
   List<Team> _teams;
 
-  List get teamsDisplayed => _userViewmodel.teamsDisplayed2;
+  List get teamsDisplayed => _userViewmodel.teamsDisplayed;
   set teamsDisplayed(value) =>
-      update(() async => _userViewmodel.teamsDisplayed2 = value);
+      update(() async => _userViewmodel.teamsDisplayed = value);
 
   String searchString = "";
 
-  bool get searched => _userViewmodel.searchTee;
-  set searched(value) => update(() async => _userViewmodel.searchTee = value);
+  bool get searched => _userViewmodel.searchTe;
+  set searched(value) => update(() async => _userViewmodel.searchTe = value);
 
-  get itemCount => _teams.length;
-  get searchCount => teamsDisplayed.length;
+  get itemCount {
+    if (_teams != null) {
+      return _teams.length;
+    } else {
+      return 0;
+    }
+  }
 
-  Team getTeamByIndex(index) => _teams[index];
+  get searchCount {
+    if (teamsDisplayed != null) {
+      return teamsDisplayed.length;
+    } else {
+      return 0;
+    }
+  }
+
+  Team getUserByIndex(index) => _teams[index];
 
   Team getSearchByIndex(index) => teamsDisplayed[index];
 
@@ -31,7 +46,7 @@ class FindTeamViewmodel extends Viewmodel {
 
   //final TeamService _service = dependency();
 
-  FindTeamViewmodel() {
+  AddTeamsViewmodel() {
     getTeamList();
   }
 
@@ -43,7 +58,7 @@ class FindTeamViewmodel extends Viewmodel {
 
   void search(String value) {
     teamsDisplayed.clear();
-    for (int i = 0; i < _teams.length; i++) {
+    for (int i = 0; i < itemCount; i++) {
       Team data = _teams[i];
       if (data.name.toString().toLowerCase().contains(value.toLowerCase())) {
         teamsDisplayed.add(data);
@@ -51,5 +66,12 @@ class FindTeamViewmodel extends Viewmodel {
     }
     searchString = value;
     print("$teamsDisplayed");
+  }
+
+  void addMember(int id) async {
+    turnBusy();
+    _teams = await _service.addTeamTournament(
+        id, _userViewmodel.selectedTournament, token);
+    turnIdle();
   }
 }

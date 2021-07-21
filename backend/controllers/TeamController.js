@@ -82,7 +82,7 @@ module.exports = {
         }
         res.status(200).send(data);
     },
-    getUsersByNoTeam: async (req, res) => {
+    getTeamsByNoTournament: async (req, res) => {
         const data = await model.getteamsByNoTournament();
         if (!data) {
             res.status(404).send('Team does not exist or has no members');
@@ -102,13 +102,13 @@ module.exports = {
         res.send(result);
     },
 
-    updateUserTeam: async (req, res) => {
-        const data = await model.updateUserTeam(parseInt(req.params.user), parseInt(req.params.team));
+    updateTeamTournament: async (req, res) => {
+        const data = await model.updateTeamTournament(parseInt(req.params.team), parseInt(req.params.tournament));
         if (!data) {
             res.status(404).send('User not found');
             return;
         }
-        const result = await model.getTeam(parseInt(req.params.user));
+        const result = await model.getTeam(parseInt(req.params.team));
         console.log(result);
         res.status(200).send(result);
     },

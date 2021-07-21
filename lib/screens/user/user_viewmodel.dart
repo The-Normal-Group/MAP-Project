@@ -16,19 +16,27 @@ class UserViewmodel extends Viewmodel {
   int _selectedTeam;
   bool _searchTo = false;
   bool _searchTe = false;
+  bool _searchTee = false;
 
   List<Team> _teamsDisplayed = List();
+  List<Team> _teamsDisplayed2 = List();
   List<Tournament> _tournamentsDisplayed = List();
   List<User> _usersDisplayed = List();
 
   get teamsDisplayed => _teamsDisplayed;
   set teamsDisplayed(value) => _teamsDisplayed = value;
 
+  get teamsDisplayed2 => _teamsDisplayed2;
+  set teamsDisplayed2(value) => _teamsDisplayed2 = value;
+
   get usersDisplayed => _usersDisplayed;
   set usersDisplayed(value) => _usersDisplayed = value;
 
   get searchTe => _searchTe;
   set searchTe(value) => _searchTe = value;
+
+  get searchTee => _searchTee;
+  set searchTee(value) => _searchTee = value;
 
   get searchTo => _searchTo;
   set searchTo(value) => _searchTo = value;
