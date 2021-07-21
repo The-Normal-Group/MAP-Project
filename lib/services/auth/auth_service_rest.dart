@@ -54,15 +54,14 @@ class AuthServiceRest implements AuthService {
     return _tournament;
   }
 
-  Future<Team> createTeam(
-      {Team team, Token token}) async {
+  Future<Team> createTeam({Team team, Token token}) async {
     print('${team.toJson()}');
     final headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ${token.token}'
     };
-    final response = await rest.post('teams',
-        data: team.toJson(), headers: headers);
+    final response =
+        await rest.post('teams', data: team.toJson(), headers: headers);
     if (response == null || response.length == 0) return null;
     print("$response");
     final _team = Team.fromJson(response);

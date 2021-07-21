@@ -35,8 +35,8 @@ class CreateTeamViewmodel extends Viewmodel {
     turnBusy();
     Team req = _team;
 
-    final Team _res =
-        await _service.createTeam(team: req, token: token);
+    print('token being sent: ${token.token}');
+    final Team _res = await _service.createTeam(team: req, token: token);
 
     turnIdle();
     return _res;

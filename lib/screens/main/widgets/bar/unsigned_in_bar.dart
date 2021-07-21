@@ -30,7 +30,7 @@ class UnsignedInBar extends Bar {
       if (_user.type == 1) {
         Navigator.pushNamed(context, '/Organizer');
       } else {
-        Navigator.pushNamed(context, '/Player');
+        Navigator.pushNamed(context, '/AddTeam');
       }
     }
   }

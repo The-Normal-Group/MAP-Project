@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../view.dart';
 import '../create_team_viewmodel.dart';
 
-
 class Body extends StatelessWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final double margin = 20.0;
@@ -114,7 +113,10 @@ class Body extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       if (formKey.currentState.validate()) {
-                        print("Proceed to submit !");
+                        final team = viewmodel.createTeam();
+                        if (team != null) {
+                          Navigator.pop(context, null);
+                        }
                       }
                     },
                     child: Text(

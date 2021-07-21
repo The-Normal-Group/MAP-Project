@@ -5,9 +5,9 @@ const user = require('../models/Teams');
 const auth = require("./authController");
 
 const schema = Joi.object({
-    name: Joi.string().min(3).required(),
+    name: Joi.string().required(),
     capacity: Joi.number().required(),
-    description: Joi.string().min(3).required(),
+    description: Joi.string().required(),
     id: Joi.optional()
 });
 
@@ -16,7 +16,7 @@ module.exports = {
     addTeam: async (req, res) => {
 
         if(req.user.type!=0){
-            res.send(403);
+            res.sendStatus(403);
             return
         }
 
@@ -33,6 +33,7 @@ module.exports = {
         }
 
         const data = await user.addTeam(newTeam);
+        console.log(data);
         res.send(data);
     }
 
