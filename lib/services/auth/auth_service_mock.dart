@@ -2,6 +2,7 @@ import '../../models/user.dart';
 import 'auth_service.dart';
 import '../../models/token.dart';
 import '../../models/tournament.dart';
+import '../../models/team.dart';
 
 class AuthServiceMock implements AuthService {
   Future<Token> authenticate({String login, String password}) async {
@@ -13,8 +14,9 @@ class AuthServiceMock implements AuthService {
   }
 
   Future<User> register({User user}) {}
-
-  Future<Tournament> createTournament({Tournament tournament}) {}
+  
+  Future<Tournament> createTournament({Tournament tournament, Token token}) {}
+  Future<Team> createTeam({Team team, Token token}) {}
 }
 
 final _users = <User>[

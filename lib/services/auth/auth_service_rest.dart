@@ -3,6 +3,8 @@ import 'package:exercise3/models/tournament.dart';
 import '../../app/dependencies.dart';
 import '../../models/user.dart';
 import '../../models/token.dart';
+import '../../models/team.dart';
+import '../../models/tournament.dart';
 import '../rest.dart';
 import 'auth_service.dart';
 
@@ -50,5 +52,20 @@ class AuthServiceRest implements AuthService {
     print("$response");
     final _tournament = Tournament.fromJson(response);
     return _tournament;
+  }
+
+  Future<Team> createTeam(
+      {Team team, Token token}) async {
+    print('${team.toJson()}');
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${token.token}'
+    };
+    final response = await rest.post('teams',
+        data: team.toJson(), headers: headers);
+    if (response == null || response.length == 0) return null;
+    print("$response");
+    final _team = Team.fromJson(response);
+    return _team;
   }
 }
