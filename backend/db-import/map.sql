@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2021 at 05:55 AM
+-- Generation Time: Jul 21, 2021 at 01:20 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -31,8 +31,18 @@ CREATE TABLE `teams` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `capacity` int(11) NOT NULL,
-  `description` varchar(255) NOT NULL
+  `description` varchar(255) NOT NULL,
+  `creator` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `teams`
+--
+
+INSERT INTO `teams` (`id`, `name`, `capacity`, `description`, `creator`) VALUES
+(2, 'team1 updated', 0, 'team 1 here', 0),
+(3, 'team2', 0, 'desc', 0),
+(5, 'team3', 2, 'team not by user 0', 1);
 
 -- --------------------------------------------------------
 
@@ -45,16 +55,17 @@ CREATE TABLE `tournaments` (
   `name` varchar(255) NOT NULL,
   `skillLevel` varchar(255) NOT NULL,
   `prizePool` double NOT NULL,
-  `description` varchar(255) NOT NULL
+  `description` varchar(255) NOT NULL,
+  `creator` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tournaments`
 --
 
-INSERT INTO `tournaments` (`id`, `name`, `skillLevel`, `prizePool`, `description`) VALUES
-(1, 'lol tournament', 'Advanced', 1234, 'bronze level tournament'),
-(2, 'lol tournament', 'Advanced', 1234, 'bronze level tournament');
+INSERT INTO `tournaments` (`id`, `name`, `skillLevel`, `prizePool`, `description`, `creator`) VALUES
+(4, 'update', 'Intermediate', 222, 'update', 0),
+(5, 'tournament2', 'Beginner', 444, 'Tournament not by user 0', 1);
 
 -- --------------------------------------------------------
 
@@ -75,39 +86,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `type`) VALUES
-(1, 'oma2r', '1234', 'omar@gmail.com', 0),
-(2, 'oma2r', '1234', 'omar@gmail.com', 0),
-(3, 'oma2r', '1234', 'omar@gmail.com', 0),
-(4, 'oma2r', '1234', 'omar@gmail.com', 0),
-(5, 'oma2r', '1234', 'omar@gmail.com', 0),
-(6, 'oma2r', '1234', 'omar@gmail.com', 0),
-(7, 'oma2r', '1234', 'omar@gmail.com', 0),
-(8, 'oma2r', '1234', 'omar@gmail.com', 0),
-(9, 'oma2r', '1234', 'omar@gmail.com', 0),
-(10, 'oma2r', '1234', 'omar@gmail.com', 0),
-(11, 'oma2r', '1234', 'omar@gmail.com', 0),
-(12, 'oma2r', '1234', 'omar@gmail.com', 0),
-(13, 'oma2r', '1234', 'omar@gmail.com', 0),
-(14, 'oma2r', '1234', 'omar@gmail.com', 0),
-(15, 'oma2r', '1234', 'omar@gmail.com', 0),
-(16, 'oma2r', '1234', 'omar@gmail.com', 0),
-(17, 'oma2r', '1234', 'omar@gmail.com', 0),
-(18, 'oma2r', '1234', 'omar@gmail.com', 0),
-(19, 'oma2r', '1234', 'omar@gmail.com', 0),
-(20, 'oma2r', '1234', 'omar@gmail.com', 0),
-(21, 'oma2r', '1234', 'omar@gmail.com', 0),
-(22, 'oma2r', '1234', 'omar@gmail.com', 0),
-(23, 'oma2r', '1234', 'omar@gmail.com', 0),
-(24, 'oma2r', '1234', 'omar@gmail.com', 0),
-(25, 'oma2r', '1234', 'omar@gmail.com', 0),
-(26, 'oma2r', '1234', 'omar@gmail.com', 0),
-(27, 'oma2r', '1234', 'omar@gmail.com', 0),
-(28, 'oma2r', '1234', 'omar@gmail.com', 0),
 (29, 'nsfsafa', '123', 'fsa@gmail.com', 0),
-(30, 'oma2r', '1234', 'omar@gmail.com', 0),
-(31, 'oma2r', '1234', 'omar@gmail.com', 0),
-(32, 'oma2r', '1234', 'omar@gmail.com', 0),
-(33, 'omar', '123', 'omar@gmail.com', 0);
+(33, 'omar', '123', 'omar@gmail.com', 0),
+(34, 'alex', '123', 'alex@gmail.com', 1);
 
 --
 -- Indexes for dumped tables
@@ -139,19 +120,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tournaments`
 --
 ALTER TABLE `tournaments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

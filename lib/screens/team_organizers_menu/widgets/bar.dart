@@ -10,7 +10,7 @@ class Bar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: Text("UTM Play"),
-      leading: IconButton(icon: Icon(Icons.menu), onPressed: (){}),
+      leading: IconButton(icon: Icon(Icons.menu), onPressed: () {}),
       centerTitle: true,
     );
   }

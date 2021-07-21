@@ -2,6 +2,7 @@ import '../../app/dependencies.dart';
 import '../../services/auth/auth_service.dart';
 import '../../models/user.dart';
 import '../../models/token.dart';
+import '../../models/team.dart';
 import '../viewmodel.dart';
 
 class UserViewmodel extends Viewmodel {
@@ -10,6 +11,10 @@ class UserViewmodel extends Viewmodel {
   Token _token;
   int _selectedTournament;
   int _selectedTeam;
+  List<Team> _teamsDisplayed = List();
+
+  get teamsDisplayed => _teamsDisplayed;
+  set teamsDisplayed(value) => _teamsDisplayed = value;
 
   get selectedTeam => _selectedTeam;
   set selectedTeam(value) => _selectedTeam = value;

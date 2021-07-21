@@ -9,8 +9,20 @@ class FindTeamViewmodel extends Viewmodel {
   AuthService get _service => dependency();
   List<Team> _teams;
 
+  List get teamsDisplayed => _userViewmodel.teamsDisplayed;
+  set teamsDisplayed(value) =>
+      update(() async => _userViewmodel.teamsDisplayed = value);
+
+  String searchString = "";
+
+  bool first = true;
+
   get itemCount => _teams.length;
+  get searchCount => teamsDisplayed.length;
+
   Team getTeamByIndex(index) => _teams[index];
+
+  Team getSearchByIndex(index) => teamsDisplayed[index];
 
   UserViewmodel get _userViewmodel => dependency();
   Token get token => _userViewmodel.token;
@@ -26,5 +38,17 @@ class FindTeamViewmodel extends Viewmodel {
     turnBusy();
     _teams = await _service.getTeamList(token);
     turnIdle();
+  }
+
+  void search(String value) {
+    teamsDisplayed.clear();
+    for (int i = 0; i < _teams.length; i++) {
+      Team data = _teams[i];
+      if (data.name.toString().toLowerCase().contains(value.toLowerCase())) {
+        teamsDisplayed.add(data);
+      }
+    }
+    searchString = value;
+    print("$teamsDisplayed");
   }
 }

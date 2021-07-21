@@ -5,18 +5,18 @@ import '../find_team_viewmodel.dart';
 
 class Body extends StatelessWidget {
   final FindTeamViewmodel _findTeamViewmodel = FindTeamViewmodel();
+
   @override
   Widget build(BuildContext context) {
     return View(
       viewmodel: _findTeamViewmodel,
       builder: (_context, viewmodel, _child) {
         final FindTeamViewmodel _viewmodel = viewmodel;
-
         return ListView.builder(
-          itemCount: _viewmodel.itemCount,
+          itemCount: _viewmodel.searchCount,
           //itemCount: 3,
           itemBuilder: (context, index) {
-            final Team _team = _viewmodel.getTeamByIndex(index);
+            final Team _team = _viewmodel.getSearchByIndex(index);
             return Card(
               child: ListTile(
                 onTap: () {
