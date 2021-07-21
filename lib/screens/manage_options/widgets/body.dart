@@ -15,9 +15,11 @@ class Body extends StatelessWidget {
             SizedBox(
               width: double.maxFinite,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/updateTournament');
+                },
                 child: Text(
-                  "Manage Tournament Details",
+                  "Manage Details",
                   style: TextStyle(
                     fontSize: 25.0,
                   ),

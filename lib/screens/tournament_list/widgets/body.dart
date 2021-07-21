@@ -52,7 +52,9 @@ class Body extends StatelessWidget {
       itemCount: tour.length,
       itemBuilder: (context, index) {
         return Card(
-          child: ListTile(onTap: () {}, title: Text(tour[index].name)),
+          child: ListTile(onTap: () {
+            Navigator.pushNamed(context, '/manage_options');
+          }, title: Text(tour[index].name)),
         );
       },
     );

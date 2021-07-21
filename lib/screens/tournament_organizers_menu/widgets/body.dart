@@ -49,6 +49,7 @@ class Body extends StatelessWidget {
                   
                   child: ElevatedButton(
                     onPressed: () {
+                      Navigator.pushNamed(context, '/tournamentList');
                     },
                     child: Text(
                       "Manage Tournament",

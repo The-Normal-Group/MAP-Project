@@ -10,7 +10,11 @@ class Bar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: Text("Manage Tournament"),
-      leading: IconButton(icon: Icon(Icons.menu), onPressed: (){}),
+      leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          }),
       centerTitle: true,
     );
   }
