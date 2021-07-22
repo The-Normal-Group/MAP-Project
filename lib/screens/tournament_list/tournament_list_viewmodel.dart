@@ -9,7 +9,11 @@ class TournamentListViewmodel extends Viewmodel {
   AuthService get _service => dependency();
   List<Tournament> _tournaments;
 
-  get itemCount => _tournaments.length;
+  get itemCount {
+    if (_tournaments == null) return 0;
+    return _tournaments.length;
+  }
+
   Tournament getTournamentByIndex(index) => _tournaments[index];
 
   UserViewmodel get _userViewmodel => dependency();

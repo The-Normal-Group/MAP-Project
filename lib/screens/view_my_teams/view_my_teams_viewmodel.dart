@@ -9,7 +9,11 @@ class ViewMyTeamsViewmodel extends Viewmodel {
   AuthService get _service => dependency();
   List<Team> _teams;
 
-  get itemCount => _teams.length;
+  get itemCount {
+    if (_teams == null) return 0;
+    return _teams.length;
+  }
+
   Team getTeamByIndex(index) => _teams[index];
 
   UserViewmodel get _userViewmodel => dependency();
