@@ -26,7 +26,7 @@ class AuthServiceRest implements AuthService {
     if (json == null || json.length == 0) return null;
 
     rest.openSession(json['accessToken']);
-    final _user = Token.fromJson(json);
+    final _user = Token.fromJsonWithUserId(json);
     return _user;
   }
 
@@ -46,6 +46,7 @@ class AuthServiceRest implements AuthService {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ${token.token}'
     };
+
     final response = await rest.post('tournaments',
         data: tournament.toJson(), headers: headers);
     if (response == null || response.length == 0) return null;
@@ -129,13 +130,14 @@ class AuthServiceRest implements AuthService {
     return _team;
   }
 
-  Future<List<Tournament>> getTournamentByCreator(Token token) async {
+  Future<List<Tournament>> getTournamentByCreator(Token token, int user) async {
     final headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ${token.token}'
     };
-    final response = await rest.get('tournaments/creator/${token.user.id}',
-        headers: headers);
+    print('User is $user');
+    final response =
+        await rest.get('tournaments/creator/$user', headers: headers);
     if (response == null || response.length == 0) return null;
     print("$response");
     final List<Tournament> _tournament = List();

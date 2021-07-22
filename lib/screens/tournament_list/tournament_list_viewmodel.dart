@@ -27,7 +27,8 @@ class TournamentListViewmodel extends Viewmodel {
 
   void getTournamentList() async {
     turnBusy();
-    _tournaments = await _service.getTournamentByCreator(token);
+    _tournaments =
+        await _service.getTournamentByCreator(token, _userViewmodel.user.id);
     turnIdle();
   }
 }

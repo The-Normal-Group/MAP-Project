@@ -26,6 +26,12 @@ class Token {
           token: json['accessToken'],
         );
 
+  Token.fromJsonWithUserId(Map<String, dynamic> json)
+      : this(
+          user: User.fromJsonWithId(json['user']),
+          token: json['accessToken'],
+        );
+
   Map<String, dynamic> toJson() => {
         'Authorization': "Bearer $token",
       };

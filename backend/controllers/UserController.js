@@ -78,7 +78,7 @@ module.exports = {
         const accessToken = jwt.sign({ username: data[0].username,  type: data[0].type, id: data[0].id }, accessTokenSecret);
         
         var user = data[0];
-
+        
         res.status(201).json({
             user,
             accessToken

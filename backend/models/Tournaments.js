@@ -81,7 +81,7 @@ module.exports = {
         //   });
 
           return (async () => {
-            var sql = `INSERT INTO tournaments (name, skillLevel, prizePool, description) VALUES ('${tournament.name}', '${tournament.skillLevel}', '${tournament.prizePool}', '${tournament.description}')`;
+            var sql = `INSERT INTO tournaments (name, skillLevel, prizePool, description, creator) VALUES ('${tournament.name}', '${tournament.skillLevel}', '${tournament.prizePool}', '${tournament.description}', '${tournament.creator}')`;
             const result = await AddTournament(sql);
             console.log(result);
             tournament.id = result;

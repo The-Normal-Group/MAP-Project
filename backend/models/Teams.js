@@ -92,7 +92,7 @@ module.exports = {
         //   });
         
         return (async () => {
-            var sql = `INSERT INTO teams (name, capacity, description) VALUES ('${team.name}', '${team.capacity}', '${team.description}')`;
+            var sql = `INSERT INTO teams (name, capacity, description, creator) VALUES ('${team.name}', '${team.capacity}', '${team.description}', '${team.creator}')`;
             const result = await AddTeam(sql);
             console.log(result);
             team.id = result;
