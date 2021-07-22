@@ -23,6 +23,11 @@ class UserViewmodel extends Viewmodel {
   List<Tournament> _tournamentsDisplayed = List();
   List<User> _usersDisplayed = List();
 
+  bool _showPopup = false;
+
+  get showPopup => _showPopup;
+  set showPopup(value) => _showPopup = value;
+
   get teamsDisplayed => _teamsDisplayed;
   set teamsDisplayed(value) => _teamsDisplayed = value;
 

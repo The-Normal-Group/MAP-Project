@@ -21,6 +21,10 @@ class UnsignedInBar extends Bar {
 
   void _onPressLoginButton(context) async {
     final _token = await Navigator.pushNamed(context, '/login');
+    if (_token == 'error') {
+      _viewmodel.showPopup = true;
+      Navigator.of(context).pushReplacementNamed('/');
+    }
     Token temp = _token;
     final _user = temp.user;
 
@@ -40,6 +44,6 @@ class UnsignedInBar extends Bar {
           _viewmodel.user = null;
         }
       }
-    }
+    } else {}
   }
 }

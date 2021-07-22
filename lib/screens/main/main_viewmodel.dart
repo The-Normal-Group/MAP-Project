@@ -10,11 +10,11 @@ class MainViewmodel extends Viewmodel {
   User get user => _userViewmodel.user;
   set user(User value) => update(() async => _userViewmodel.user = value);
 
+  bool get showPopup => _userViewmodel.showPopup;
+  set showPopup(value) => update(() async => _userViewmodel.showPopup = value);
+
   Token get token => _userViewmodel.token;
   set token(Token value) => update(() async => _userViewmodel.token = value);
-
-  void authenticate(User user) =>
-      update(() async => _userViewmodel.authenticate(user));
 
   bool get isUserSignedIn => _userViewmodel.isUserSignedIn;
 }

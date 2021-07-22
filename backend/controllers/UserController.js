@@ -84,7 +84,7 @@ module.exports = {
             accessToken
         });
         } else {
-            res.send('Username or password incorrect');
+            res.status(404).send('Username or password incorrect');
         }
     },
 

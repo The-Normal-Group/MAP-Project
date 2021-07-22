@@ -1,28 +1,41 @@
 import 'package:exercise3/screens/main/counter_viewmodel.dart';
 import 'package:exercise3/screens/view.dart';
 import 'package:flutter/material.dart';
+import 'package:exercise3/screens/main/main_viewmodel.dart';
 
 class Body extends StatelessWidget {
-  final CounterViewmodel _viewmodel;
-  const Body(CounterViewmodel viewmodel) : _viewmodel = viewmodel;
+  final MainViewmodel _viewmodel;
+  const Body(MainViewmodel viewmodel) : _viewmodel = viewmodel;
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('You have pushed the button this many times:'),
-          SizedBox(
-            height: 100.0,
-            child: View(
-                viewmodel: _viewmodel,
-                builder: (_, viewmodel, __) => Text(
-                    '${viewmodel.counter.counter}',
-                    style: Theme.of(context).textTheme.headline4)),
-          ),
+      child: Card(
+        child: (_viewmodel.showPopup) ? _buildPopupDialog(context) : null,
+      ),
+    );
+  }
+
+  Widget _buildPopupDialog(BuildContext context) {
+    return new AlertDialog(
+      title: Text(""),
+      content: new Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text("Username or password is incorrect."),
         ],
       ),
+      actions: <Widget>[
+        new FlatButton(
+          onPressed: () {
+            _viewmodel.showPopup = false;
+            Navigator.of(context).pushReplacementNamed('/');
+          },
+          textColor: Theme.of(context).primaryColor,
+          child: const Text('Close'),
+        ),
+      ],
     );
   }
 }

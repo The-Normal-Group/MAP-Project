@@ -24,7 +24,11 @@ class Body extends StatelessWidget {
             return Card(
               child: ListTile(
                 onTap: () {
-                  //Navigator.pushNamed(context, ""); the name of the route of the new page you will create (PLEASE REFER TO THE DOC)
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        _buildPopupDialog(context, _team),
+                  );
                 },
                 title: Text(_team.name),
                 //title: Text("Team1"),
@@ -33,6 +37,28 @@ class Body extends StatelessWidget {
           },
         );
       },
+    );
+  }
+
+  Widget _buildPopupDialog(BuildContext context, Team team) {
+    return new AlertDialog(
+      title: Text("${team.name}'s description"),
+      content: new Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text("${team.description}"),
+        ],
+      ),
+      actions: <Widget>[
+        new FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          textColor: Theme.of(context).primaryColor,
+          child: const Text('Close'),
+        ),
+      ],
     );
   }
 }

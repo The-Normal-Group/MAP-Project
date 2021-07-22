@@ -71,6 +71,10 @@ class RestService {
     if (response.statusCode == successCode) {
       return jsonDecode(response.body);
     }
+
+    if (response.statusCode == 404) {
+      return null;
+    }
     throw response;
   }
 

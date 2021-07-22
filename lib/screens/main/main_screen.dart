@@ -19,7 +19,10 @@ class MainScreen extends StatelessWidget {
         child: View(
           viewmodel: MainViewmodel(),
           builder: (_, mainViewmodel, __) {
-            return Scaffold(appBar: UnsignedInBar(mainViewmodel));
+            return Scaffold(
+              appBar: UnsignedInBar(mainViewmodel),
+              body: Body(mainViewmodel),
+            );
           },
         ),
       ),

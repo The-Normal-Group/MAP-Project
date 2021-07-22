@@ -22,7 +22,7 @@ class AuthServiceRest implements AuthService {
   Future<Token> authenticate({String login, String password}) async {
     Map user = {'username': '$login', 'password': '$password'};
     final json = await rest.post('login', data: user);
-    print('$json');
+    print('THIS IS THE RESPONSE: $json');
     if (json == null || json.length == 0) return null;
 
     rest.openSession(json['accessToken']);

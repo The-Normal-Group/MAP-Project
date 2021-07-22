@@ -8,6 +8,9 @@ import '../login_viewmodel.dart';
 class Body extends StatelessWidget {
   void _onLogin(BuildContext context, LoginViewmodel viewmodel) async {
     final Token _token = await viewmodel.authenticate();
+    if (_token == null) {
+      Navigator.pop(context, 'error');
+    }
     final User _user = _token.user;
 
     if (_user != null) Navigator.pop(context, _token);
@@ -64,18 +67,46 @@ class Body extends StatelessWidget {
     );
   }
 
-  Row _buildButtons(BuildContext context, LoginViewmodel viewmodel) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+  Column _buildButtons(BuildContext context, LoginViewmodel viewmodel) {
+    return Column(
       children: [
-        ElevatedButton(
-          child: Text('Log in'),
-          onPressed: () => _onLogin(context, viewmodel),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              child: Text('Log in'),
+              onPressed: () => _onLogin(context, viewmodel),
+            ),
+            SizedBox(width: 10.0),
+            ElevatedButton(
+              child: Text('Cancel'),
+              onPressed: () => _onCancel(context, viewmodel),
+            ),
+          ],
         ),
-        SizedBox(width: 10.0),
-        ElevatedButton(
-          child: Text('Cancel'),
-          onPressed: () => _onCancel(context, viewmodel),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(width: 20.0),
+            Text(''),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(width: 20.0),
+            Text(''),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(width: 20.0),
+            ElevatedButton(
+                child: Text('Register'),
+                onPressed: () =>
+                    Navigator.pushReplacementNamed(context, '/Register')),
+          ],
         ),
       ],
     );

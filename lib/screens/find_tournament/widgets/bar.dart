@@ -18,7 +18,13 @@ class Bar extends StatelessWidget implements PreferredSizeWidget {
           final FindTournamentViewmodel _viewmodel = viewmodel;
           return FloatingSearchAppBar(
             automaticallyImplyBackButton: false,
-            title: Text("Find Tournament"),
+            iconColor: Colors.white,
+            color: Colors.blue,
+            accentColor: Colors.white,
+            title: Text(
+              "Find Tournament",
+              style: TextStyle(color: Colors.white),
+            ),
             leadingActions: [
               IconButton(
                   icon: Icon(Icons.arrow_back),

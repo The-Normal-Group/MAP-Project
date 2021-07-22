@@ -47,8 +47,10 @@ class LoginViewmodel extends Viewmodel {
     turnBusy();
     final Token _token =
         await _service.authenticate(login: username, password: password);
-    final User _user = _token.user;
-    if (_user == null) _showErrorMessage = true;
+    if (_token == null) {
+      _showErrorMessage = true;
+      return null;
+    }
     turnIdle();
     return _token;
   }

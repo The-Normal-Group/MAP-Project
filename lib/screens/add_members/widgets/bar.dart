@@ -17,7 +17,12 @@ class Bar extends StatelessWidget implements PreferredSizeWidget {
           final AddMembersViewmodel _viewmodel = viewmodel;
           return FloatingSearchAppBar(
             automaticallyImplyBackButton: false,
-            title: Text("Add Members"),
+            color: Colors.blue,
+            iconColor: Colors.white,
+            title: Text(
+              "Add Members",
+              style: TextStyle(color: Colors.white),
+            ),
             leadingActions: [
               IconButton(
                   icon: Icon(Icons.arrow_back),
